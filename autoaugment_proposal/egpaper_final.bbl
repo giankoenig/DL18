@@ -1,0 +1,8 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{DBLP:journals/corr/abs-1805-09501}
+E.~D. Cubuk, B.~Zoph, D.~Man{\'{e}}, V.~Vasudevan, and Q.~V. Le.
+\newblock Autoaugment: Learning augmentation policies from data.
+\newblock {\em CoRR}, abs/1805.09501, 2018.
+
+\end{thebibliography}
