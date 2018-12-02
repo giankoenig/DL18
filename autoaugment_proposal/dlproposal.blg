@@ -1,16 +1,11 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: egpaper_final.aux
+The top-level auxiliary file: dlproposal.aux
 The style file: ieee.bst
-Database file #1: egbib.bib
-Warning--I didn't find a database entry for "Authors14b"
-Warning--I didn't find a database entry for "Alpher02"
-Warning--I didn't find a database entry for "Alpher03"
-Warning--I didn't find a database entry for "Alpher04"
-Warning--I didn't find a database entry for "Authors14"
+Database file #1: dlbib.bib
 You've used 1 entry,
             2120 wiz_defined-function locations,
-            515 strings with 4051 characters,
+            505 strings with 3959 characters,
 and the built_in function-call counts, 358 in all, are:
 = -- 30
 > -- 28
@@ -49,4 +44,3 @@ warning$ -- 0
 while$ -- 2
 width$ -- 2
 write$ -- 13
-(There were 5 warnings)
