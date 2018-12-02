@@ -5,4 +5,10 @@ E.~D. Cubuk, B.~Zoph, D.~Man{\'{e}}, V.~Vasudevan, and Q.~V. Le.
 \newblock Autoaugment: Learning augmentation policies from data.
 \newblock {\em CoRR}, abs/1805.09501, 2018.
 
+\bibitem{Goodfellow-et-al-2016}
+I.~Goodfellow, Y.~Bengio, and A.~Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, 2016.
+\newblock \url{http://www.deeplearningbook.org}.
+
 \end{thebibliography}
