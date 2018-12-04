@@ -1,2 +1,7 @@
 autoaugment/data/
 autoaugment/trainig/model/
+autoaugment_proposal/dlproposal.aux
+autoaugment_proposal/dlproposal.log
+autoaugment_proposal/dlproposal.synctex.gz
+autoaugment_proposal/dlproposal.bbl
+autoaugment_proposal/dlproposal.blg
