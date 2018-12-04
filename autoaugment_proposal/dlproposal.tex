@@ -33,7 +33,7 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Project Proposal: An Analysis of Learning Augmentation Policies from Data}
+\title{Project Proposal: Alternative Algorithms for Learning Augmentation Policies from Data and the Generalization on other Datasets}
 
 \author{
     	\small{NAMES: Samuel Frommenwiler, Gian K\"onig, Colin K\"alin} \\
@@ -55,10 +55,22 @@
 
 \section{What has been done}
 
-Summary of ~\cite{DBLP:journals/corr/abs-1805-09501}
+For CIFAR-10, i. e. a dataset of natural images, common dataset augmentation methods are random cropping, image mirroring, color shifting and color whitening~\cite{Ekin}. These methods require expert knowledge and time. Therefore an automated approach was introduced.
+
+Summary of ~\cite{Ekin}. As a search algorithm Ekin et. al. ~\cite{Ekin} formulate the problem of finding the best augmentation policy as a discrete search problem and Reinforcement Learning to solve the problem.
+
+They belief, that further improvements can be made if better algorithms are used. Ekin et. al. propose genetic programming or random search.
+
+Why are certain transformations more common than others in the optimal policies (like equlize, AutoContrast, Color and Brightness versus geometric transformations like ShearX(Y))? And why is Invert almost never present in a good policy in CIFAR-10?
+
+The concept of baysien optimization~\cite{DBLP:journals/corr/abs-1012-2599}. Using the tutorial described in~\cite{2018arXiv180702811F}.  
 
 \section{Problems we want to investigate}
+Use~\cite{2018arXiv180201548R} and~\cite{2018arXiv180307055M} to state your tests: we want to use these approaches. Do other solutions found with these other algorithms also generalize well? Can we beat the $2\%$ barrier on CIFAR-10 with a Baysien approach?
 As stated in~\cite{Goodfellow-et-al-2016} 
+
+\section{Status of the project}
+One epoch takes over 5 hours on my MacBook Pro. Run the code on Floydhub and Google Colab. Implement a test network\footnote{https://towardsdatascience.com/cifar-10-image-classification-in-tensorflow-5b501f7dc77c} to test on reduced CIFAR-10 were~\cite{Ekin} achieved an error rate of $1.48\%$.
 
 {\small
 \bibliographystyle{ieee}

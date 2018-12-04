@@ -1,14 +1,36 @@
 \begin{thebibliography}{1}\itemsep=-1pt
 
-\bibitem{DBLP:journals/corr/abs-1805-09501}
+\bibitem{DBLP:journals/corr/abs-1012-2599}
+E.~Brochu, V.~M. Cora, and N.~de~Freitas.
+\newblock A tutorial on bayesian optimization of expensive cost functions, with
+  application to active user modeling and hierarchical reinforcement learning.
+\newblock {\em CoRR}, abs/1012.2599, 2010.
+
+\bibitem{Ekin}
 E.~D. Cubuk, B.~Zoph, D.~Man{\'{e}}, V.~Vasudevan, and Q.~V. Le.
 \newblock Autoaugment: Learning augmentation policies from data.
 \newblock {\em CoRR}, abs/1805.09501, 2018.
+
+\bibitem{2018arXiv180702811F}
+P.~I. {Frazier}.
+\newblock {A Tutorial on Bayesian Optimization}.
+\newblock {\em ArXiv e-prints}, page arXiv:1807.02811, July 2018.
 
 \bibitem{Goodfellow-et-al-2016}
 I.~Goodfellow, Y.~Bengio, and A.~Courville.
 \newblock {\em Deep Learning}.
 \newblock MIT Press, 2016.
 \newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem{2018arXiv180307055M}
+H.~{Mania}, A.~{Guy}, and B.~{Recht}.
+\newblock {Simple random search provides a competitive approach to
+  reinforcement learning}.
+\newblock {\em ArXiv e-prints}, page arXiv:1803.07055, Mar. 2018.
+
+\bibitem{2018arXiv180201548R}
+E.~{Real}, A.~{Aggarwal}, Y.~{Huang}, and Q.~V. {Le}.
+\newblock {Regularized Evolution for Image Classifier Architecture Search}.
+\newblock {\em ArXiv e-prints}, page arXiv:1802.01548, Feb. 2018.
 
 \end{thebibliography}
