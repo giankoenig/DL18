@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.27)  2 DEC 2018 14:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.28)  4 DEC 2018 13:01
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **dlproposal.tex
 (./dlproposal.tex
@@ -446,7 +445,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
  ) 
 Here is how much of TeX's memory you used:
  6737 strings out of 493089
- 97361 string characters out of 6134842
+ 97361 string characters out of 6134841
  188494 words of memory out of 5000000
  10106 multiletter control sequences out of 15000+600000
  28801 words of font info for 70 fonts, out of 8000000 for 9000
@@ -459,7 +458,7 @@ e/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on dlproposal.pdf (1 page, 64827 bytes).
+Output written on dlproposal.pdf (1 page, 64832 bytes).
 PDF statistics:
  52 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
