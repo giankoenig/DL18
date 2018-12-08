@@ -9,10 +9,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\setlength{\voffset}{-75pt}
+\setlength{\voffset}{-50pt}
 %\setlength{\hoffset}{-25pt}
-\setlength{\headsep}{2pt}
-\setlength{\textheight}{740pt}
+%!TEX encoding = UTF-8 Unicode\setlength{\headsep}{2pt}
+\setlength{\textheight}{715pt}
 %\setlength{\textwidth}{511pt}
 
 % Include other packages here, before hyperref.
@@ -29,11 +29,11 @@
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 %\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{1}
+% \setcounter{page}{1}
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Project Proposal: Alternative Algorithms for Learning Augmentation Policies from Data and the Generalization on other Datasets}
+\title{Project Proposal: An Alternative Algorithm for Learning Augmentation Policies from Data and the Generalization on other Datasets}
 
 \author{
     	\small{NAMES: Samuel Frommenwiler, Gian K\"onig, Colin K\"alin} \\
@@ -47,30 +47,31 @@
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-   This document states the proposed content of the project for the deep learning course\footnote{http://www.da.inf.ethz.ch/teaching/2018/DeepLearning/} at ETH.
+   This document states the proposed content of the project for the deep learning course at ETH as required in~\cite{DL18}. The goal is to investigate Baysien Optimization to tune hyperparameters for automated data-augmentation policies.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
-\section{Introduction}
+\section{AutoAugment with Reinforcement Learning}
+When the dataset is limited, a procedure called data augmentation can be used to increase both the amount and the diversity of the data randomly. For a dataset of natural images like the CIFAR-10, common dataset augmentation methods are random cropping, image mirroring, color shifting and color whitening. These methods require expert knowledge and time. Therefore an automated approach was introduced in order to find the best policies~\cite{Ekin}. Cubuk et. al. present a process of finding an efficient data augmentation policy, in which each policy contains possible augmentation operations. Each operation contains an image processing function (e. g. translation, rotation or color normalization) combined with a probability that this function is applied and a corresponding magnitude. To find the best choices of these functions and suitable scaling factors, Ekin et. al. use a Reinforcement Learning search algorithm such that a neural network, trained on these hyper parameters, yield the best validation accuracy.
 
-\section{What has been done}
 
-For CIFAR-10, i. e. a dataset of natural images, common dataset augmentation methods are random cropping, image mirroring, color shifting and color whitening~\cite{Ekin}. These methods require expert knowledge and time. Therefore an automated approach was introduced.
+\section{AutoAugment with Baysien Optimization}
+We intend to investigate the Bayesian Optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt}. For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate Baysien Optimization into the data augmentation task. The questions we would like to answer are: Can we beat the $2.68\%$ barrier on CIFAR-10 with a Baysien approach? Or what are the issues with the proposed approach if this baseline can not be achieve. 
+We want to investigate the problem with two different approach. The first is based on the code provided by Ekin et. al. The second approach is to build up another classifier model as described in~\cite{cifar-10-cl}, integrate Baysien Optimization and compare the results to the first approach.
 
-Summary of ~\cite{Ekin}. As a search algorithm Ekin et. al. ~\cite{Ekin} formulate the problem of finding the best augmentation policy as a discrete search problem and Reinforcement Learning to solve the problem.
+We started to investigate the code and already run a few test runs with with the CIFAR-10 dataset and the Wide-ResNet~\cite{Ekin}. On a MacBook Pro, one epoch takes around 5.5 hours. On the Google Cloud~\cite{GCloud} we were able to run the 200 epochs in 9h15min.
 
-They belief, that further improvements can be made if better algorithms are used. Ekin et. al. propose genetic programming or random search.
+% https://towardsdatascience.com/cifar-10-image-classification-in-tensorflow-5b501f7dc77c
+% https://github.com/deep-diver/CIFAR10-img-classification-tensorflow
 
-Why are certain transformations more common than others in the optimal policies (like equlize, AutoContrast, Color and Brightness versus geometric transformations like ShearX(Y))? And why is Invert almost never present in a good policy in CIFAR-10?
+% https://towardsdatascience.com/automated-machine-learning-hyperparameter-tuning-in-python-dfda59b72f8a
+% https://towardsdatascience.com/an-introductory-example-of-bayesian-optimization-in-python-with-hyperopt-aae40fff4ff0
+% https://www.kaggle.com/willkoehrsen/automated-model-tuning
+% https://www.kaggle.com/willkoehrsen/introduction-to-manual-feature-engineering
+% https://www.kaggle.com/willkoehrsen/introduction-to-manual-feature-engineering-p2
 
-The concept of baysien optimization~\cite{DBLP:journals/corr/abs-1012-2599}. Using the tutorial described in~\cite{2018arXiv180702811F}.  
+% https://arxiv.org/pdf/1710.10564.pdf
 
-\section{Problems we want to investigate}
-Use~\cite{2018arXiv180201548R} and~\cite{2018arXiv180307055M} to state your tests: we want to use these approaches. Do other solutions found with these other algorithms also generalize well? Can we beat the $2\%$ barrier on CIFAR-10 with a Baysien approach?
-As stated in~\cite{Goodfellow-et-al-2016} 
-
-\section{Status of the project}
-One epoch takes over 5 hours on my MacBook Pro. Run the code on Floydhub and Google Colab. Implement a test network\footnote{https://towardsdatascience.com/cifar-10-image-classification-in-tensorflow-5b501f7dc77c} to test on reduced CIFAR-10 were~\cite{Ekin} achieved an error rate of $1.48\%$.
 
 {\small
 \bibliographystyle{ieee}
