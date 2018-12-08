@@ -1,9 +1,9 @@
-# H1 Deep Learning Project 2018
+# Deep Learning Project 2018
 
 Main code:
 https://github.com/tensorflow/models/tree/master/research/autoaugment
 
-# H2 Links
+## Links
 https://github.com/deep-diver/CIFAR10-img-classification-tensorflow
 https://github.com/hyperopt/hyperopt
 https://sheffieldml.github.io/GPyOpt/
