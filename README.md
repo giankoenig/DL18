@@ -20,4 +20,6 @@ https://github.com/tensorflow/models/tree/master/research/autoaugment
 
 ## Papers
 - A Bayesian Data Augmentation Approach for Learning Deep Models: https://arxiv.org/pdf/1710.10564.pdf
-- 
+- https://arxiv.org/pdf/1710.10564.pdf
+- https://arxiv.org/pdf/1811.04768.pdf
+- https://infoscience.epfl.ch/record/218496/files/ICIP_CAMERAREADY_2715.pdf 
