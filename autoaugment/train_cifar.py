@@ -36,8 +36,8 @@ from wrn import build_wrn_model
 tf.flags.DEFINE_string('model_name', 'wrn',
                        'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
                        'pyramid_net')
-tf.flags.DEFINE_string('checkpoint_dir', 'training/', 'Training Directory.')
-tf.flags.DEFINE_string('data_path', 'data/',
+tf.flags.DEFINE_string('checkpoint_dir', 'tmp/training/', 'Training Directory.')
+tf.flags.DEFINE_string('data_path', 'tmp/data/',
                        'Directory where dataset is located.')
 tf.flags.DEFINE_string('dataset', 'cifar10',
                        'Dataset to train with. Either cifar10 or cifar100')
