@@ -61,11 +61,16 @@ Machine learning algorithms usually achieve better results with more data, howev
 
 \section{AutoAugment with Baysian Optimization}
 
-We intend to use Bayesian optimization, a technique already used for tuning hyperparameters, to automatically select a good combination of augmentation policies. And to compare this to the approach used in~\cite{Ekin}.
-Specifically, we are going to investigate the Bayesian optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt} . For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate Bayesian optimization into the data augmentation task.
-We will focus on using a single network architecture (WideResNet), using the same hyperparameters as the authors of the original paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing bayesian opt to select the optimal combination of augmentation policies. The questions we would like to answer are: How does our approach compare to the $2.68\%$ baseline on CIFAR-10 with WideResNet that Cubuk et al. achieved and to the result that Geng et al. got? Can we find a comparable augmentation policy in less iterations or are we able to surpass the result that they got?
+We intend to use bayesian optimization, a technique already used for tuning hyperparameters, to automatically select a good combination of augmentation policies. And to compare this to the approach used in~\cite{Ekin}.
+Specifically, we are going to investigate the bayesian optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt}. For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate bayesian optimization into the data augmentation task.
+We will focus on using a single network architecture (WideResNet), using the same hyperparameters as the authors of the original paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing bayesian optimization to select the optimal combination of augmentation policies. The questions we would like to answer are: 
+\begin{itemize}
+\item How does our approach compare to the $2.68\%$ baseline on CIFAR-10 with WideResNet that Cubuk et al. achieved and to the result that Geng et al. got? 
+\item Can we find a comparable augmentation policy in less iterations or are we able to surpass the result that they got?
+\end{itemize}
 
-We started to investigate the code and already run a few tests with the CIFAR-10 dataset and the Wide-ResNet architecture ~\cite{Ekin}. On a MacBook Pro (macOS Sierra 10.12.5, 2.4 GHz Intel Core i7, 16 GB 1600 MHz DDR3, Intel HD Graphics 4000 1536 MB), one epoch takes around 5.5 hours to complete. On the Google Cloud~\cite{GCloud} using one Tesla P100 GPU we were able to achieve the baseline of autoaugment in 9h15min.
+We started to investigate the code and already run a few tests with the CIFAR-10 dataset and the Wide-ResNet architecture ~\cite{Ekin}. On a MacBook Pro (macOS Sierra 10.12.5, 2.4 GHz Intel Core i7, 16 GB 1600 MHz DDR3, Intel HD Graphics 4000 1536 MB), one epoch takes around 5.5 hours to complete. On the Google Cloud~\cite{GCloud} using one Tesla P100 GPU we were able to achieve the baseline presented by Cubuk et. al. in 9h15min.
+
 The next steps will be to make the search space continuous and integrate the Hyperopt library. Once the setup is working we want to see if we can find an equally good augmentation policy in less iterations or running the process for a longer period if we can find a better optimum in our continuous search space.
 
 
