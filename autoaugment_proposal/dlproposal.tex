@@ -34,7 +34,7 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Project Proposal: An Alternative Algorithm for Learning Augmentation Policies from Data and the Generalization on other Datasets}
+\title{Project Proposal: Using Bayesian Optimization to Find Good Augmentation Policies from Data}
 
 \author{
     	\small{NAMES: Samuel Frommenwiler, Gian K\"onig, Colin K\"alin} \\
@@ -56,7 +56,7 @@
 Machine learning algorithms usually achieve better results with more data, however acquiring this additional data can be expensive and time-consuming.  A common trick to increase the amount of training data is to add copies of existing data with small perturbations to the training set. For a dataset of natural images dataset augmentation methods include random cropping, image mirroring, rotation, color shifting and color whitening. Picking a good combination of these methods is usually done by hand and requires expert knowledge and time.
 \par
   Therefore, an automated approach was introduced in order to find the best policies~\cite{Ekin}. Cubuk et. al. present a process of finding an efficient data augmentation policy, in which each policy contains possible augmentation operations. Each operation contains an image processing function (e. g. translation, rotation or color normalization) combined with a probability that this function is applied with a corresponding magnitude. To find the best choices of these functions and suitable scaling factors, Cubuk et. al. use a reinforcement learning search algorithm such that a neural network, trained on these hyperparameters, yields the best validation accuracy.
-  Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using augmented random search to efficiently find augmentation policies in a continous hyperparameter search space.
+  Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using augmented random search to efficiently find augmentation policies in a continuous hyperparameter search space.
   Tran et al. \cite{DBLP:journals/corr/abs-1710-10564} follow a slightly different approach where they use GANs to find valid augmented data. While Fawzi et al. \cite{Fawzi} pursued a worst-case augmentation approach where they generate augmented data which gives the biggest loss for the current classifier.
 
 \section{AutoAugment with Baysian Optimization}
