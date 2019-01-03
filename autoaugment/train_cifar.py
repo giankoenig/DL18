@@ -372,7 +372,6 @@ class CifarModelTrainer(object):
       training_accuracy = None
 
       for curr_epoch in xrange(starting_epoch, hparams.num_epochs):
-
         # Run one training epoch
         training_accuracy = self._run_training_loop(m, curr_epoch)
 
