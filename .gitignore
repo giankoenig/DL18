@@ -5,8 +5,10 @@ autoaugment/tmp/trainig/
 autoaugment_proposal/dlproposal.aux
 autoaugment_proposal/dlproposal.log
 autoaugment_proposal/dlproposal.synctex.gz
-autoaugment_proposal/dlproposal.bbl
 autoaugment_proposal/dlproposal.blg
 autoaugment_proposal/dlproposal.pdf
 *.pyc
 *.png
+autoaugment_final/*.aux
+autoaugment_final/*.log
+autoaugment_final/*.syntex.gz
