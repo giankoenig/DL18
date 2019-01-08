@@ -1,0 +1,107 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%\usepackage[showframe]{geometry}
+\usepackage{geometry}
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{soul}
+
+\setlength{\voffset}{-50pt}
+%\setlength{\hoffset}{-25pt}
+%!TEX encoding = UTF-8 Unicode\setlength{\headsep}{2pt}
+\setlength{\textheight}{715pt}
+%\setlength{\textwidth}{511pt}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[breaklinks=true,bookmarks=false]{hyperref}
+
+\cvprfinalcopy % *** Uncomment this line for the final submission
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+%\ifcvprfinal\pagestyle{empty}\fi
+% \setcounter{page}{1}
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{Project Proposal: Using Bayesian Optimization to Find Good Augmentation Policies from Data}
+
+\author{
+    	\small{NAMES: Samuel Frommenwiler, Gian K\"onig, Colin K\"alin} \\
+   	\small{NETHZ: fsamuel, koenigg, ckaelin}\\
+	\small{EMAIL: \{fsamuel, koenigg, ckaelin\}$@$student.ethz.ch}\\
+    	\small{ID: 08-738-601, 09-913-245, 14-935-118}
+}
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
+\begin{abstract}
+   This document states the proposed content of the project for the deep learning course at ETH as required in~\cite{DL18}. The goal is to investigate Baysian Optimization to tune hyperparameters for automated data-augmentation policies.
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+\section{AutoAugment with Reinforcement Learning}
+Machine learning algorithms usually achieve better results with more data, however acquiring this additional data can be expensive and time-consuming.  A common trick to increase the amount of training data is to add copies of existing data with small perturbations to the training set. For a dataset of natural images dataset augmentation methods include random cropping, image mirroring, rotation, color shifting and color whitening. Picking a good combination of these methods is usually done by hand and requires expert knowledge and time.
+\par
+  Therefore, an automated approach was introduced in order to find the best policies~\cite{Ekin}. Cubuk et. al. present a process of finding an efficient data augmentation policy, in which each policy contains possible augmentation operations. Each operation contains an image processing function (e. g. translation, rotation or color normalization) combined with a probability that this function is applied with a corresponding magnitude. To find the best choices of these functions and suitable scaling factors, Cubuk et. al. use a reinforcement learning search algorithm such that a neural network, trained on these hyperparameters, yields the best validation accuracy.
+  Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using augmented random search to efficiently find augmentation policies in a continuous hyperparameter search space.
+  Tran et al. \cite{DBLP:journals/corr/abs-1710-10564} follow a slightly different approach where they use GANs to find valid augmented data. While Fawzi et al. \cite{Fawzi} pursued a worst-case augmentation approach where they generate augmented data which gives the biggest loss for the current classifier.
+
+\section{AutoAugment with Baysian Optimization}
+
+We intend to use Bayesian optimization, a technique already used for tuning hyperparameters, to automatically select a good combination of augmentation policies. And to compare this to the approach used in~\cite{Ekin}.
+Specifically, we are going to investigate the Bayesian optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt}. For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate Bayesian optimization into the data augmentation task.
+We will focus on using a single network architecture (WideResNet), using the same hyperparameters as the authors of the original paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing Bayesian optimization to select the optimal combination of augmentation policies. The questions we would like to answer are: 
+\begin{itemize}
+\item How does our approach compare to the $2.68\%$ baseline on CIFAR-10 with WideResNet that Cubuk et al. achieved and to the result that Geng et al. got? 
+\item Can we find a comparable augmentation policy in less iterations or are we able to surpass the result that they got?
+\end{itemize}
+
+We started to investigate the code and already run a few tests with the CIFAR-10 dataset and the Wide-ResNet architecture ~\cite{Ekin}. On a MacBook Pro (macOS Sierra 10.12.5, 2.4 GHz Intel Core i7, 16 GB 1600 MHz DDR3, Intel HD Graphics 4000 1536 MB), one epoch takes around 5.5 hours to complete. On the Google Cloud~\cite{GCloud} using one Tesla P100 GPU we were able to achieve the baseline presented by Cubuk et. al. in 9h15min.
+
+The next steps will be to make the search space continuous and integrate the Hyperopt library. Once the setup is working we want to see if we can find an equally good augmentation policy in less iterations or running the process for a longer period if we can find a better optimum in our continuous search space.
+
+\section{Infrastructure}
+A first attempt to run the code on the CPU: MacBook Pro (Retina, 15-inch, Early 2013) with the following specifications 2.4 GHz Intel Core i7, 16 GB 1600 MHz DDR3, Intel HD Graphics 4000 1536 MB, macOS Sierra 10.12.5. This resulted in a Training Time: INFO:tensorflow:Finished epoch: 0, INFO:tensorflow:Epoch time(min): 332.059691219. \newline
+
+We tried to execute the code on the Leonhard Cluster\footnote{https://scicomp.ethz.ch/wiki/Leonhard}. For this the following commands were necessary. 1) ssh koenigg@login.leonhard.ethz.ch 2) Create folders and git clone and upload the data from PC rsync -Pav ~/Dropbox/CAS/DL/DL18/autoaugment/tmp/data/ koenigg@login.leonhard.ethz.ch:/cluster/home/koenigg/DL\_Project 3) module load python\_gpu/2.7.13 (module list: Currently Loaded Modules: 1) StdEnv   2) gcc/4.8.5   3) openblas/0.2.19   4) cuda/8.0.61   5) cudnn/6.0   6) jpeg/9b   7) libpng/1.6.27   8) python\_gpu/2.7.13) 4) Execute the code: bsub -n 20 -R "rusage[mem=4500,ngpus\_excl\_p=1]" python train\_cifar.py --model\_name=wrn --checkpoint\_dir=tmp/training/ --data\_path=tmp/data/ --dataset='cifar10' --use\_cpu=0. It turns out on the Leonhard Cluster we can only use 1 GPU which is not enough for our dataset.\newline
+
+[koenigg@lo-login-02 model]\$ ls -l
+total 570652
+-rw-rw---- 1 koenigg koenigg-group       127 Jan  8 13:49 checkpoint
+-rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 13:44 model.ckpt-40.data-00000-of-00001
+-rw-rw---- 1 koenigg koenigg-group      9868 Jan  8 13:44 model.ckpt-40.index
+-rw-rw---- 1 koenigg koenigg-group   1163579 Jan  8 13:44 model.ckpt-40.meta
+-rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 13:49 model.ckpt-41.data-00000-of-00001
+-rw-rw---- 1 koenigg koenigg-group      9868 Jan  8 13:49 model.ckpt-41.index
+-rw-rw---- 1 koenigg koenigg-group   1163579 Jan  8 13:49 model.ckpt-41.meta
+
+% https://towardsdatascience.com/cifar-10-image-classification-in-tensorflow-5b501f7dc77c
+% https://github.com/deep-diver/CIFAR10-img-classification-tensorflow
+
+% https://towardsdatascience.com/automated-machine-learning-hyperparameter-tuning-in-python-dfda59b72f8a
+% https://towardsdatascience.com/an-introductory-example-of-Bayesian-optimization-in-python-with-hyperopt-aae40fff4ff0
+% https://www.kaggle.com/willkoehrsen/automated-model-tuning
+% https://www.kaggle.com/willkoehrsen/introduction-to-manual-feature-engineering
+% https://www.kaggle.com/willkoehrsen/introduction-to-manual-feature-engineering-p2
+% https://arxiv.org/pdf/1710.10564.pdf
+
+
+{\small
+\bibliographystyle{ieee}
+\bibliography{dlbib}
+}
+
+\end{document}
