@@ -1,0 +1,1870 @@
+Sender: LSF System <lsfadmin@lo-s4-032>
+Subject: Job 1059733: <python train_cifar.py --model_name=wrn --checkpoint_dir=tmp/training/ --data_path=tmp/data/ --dataset=cifar10 --use_cpu=0> in cluster <leonhard> Exited
+
+Job <python train_cifar.py --model_name=wrn --checkpoint_dir=tmp/training/ --data_path=tmp/data/ --dataset=cifar10 --use_cpu=0> was submitted from host <lo-login-02> by user <koenigg> in cluster <leonhard> at Wed Jan  9 13:40:33 2019
+Job was executed on host(s) <20*lo-s4-032>, in queue <gpu.4h>, as user <koenigg> in cluster <leonhard> at Wed Jan  9 13:41:01 2019
+</cluster/home/koenigg> was used as the home directory.
+</cluster/home/koenigg/DL_Project/autoaugment> was used as the working directory.
+Started at Wed Jan  9 13:41:01 2019
+Terminated at Wed Jan  9 17:40:57 2019
+Results reported at Wed Jan  9 17:40:57 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python train_cifar.py --model_name=wrn --checkpoint_dir=tmp/training/ --data_path=tmp/data/ --dataset=cifar10 --use_cpu=0
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   7488.80 sec.
+    Max Memory :                                 7852 MB
+    Average Memory :                             6547.00 MB
+    Total Requested Memory :                     90000.00 MB
+    Delta Memory :                               82148.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                91
+    Run time :                                   14419 sec.
+    Turnaround time :                            14424 sec.
+
+The output (if any) follows:
+
+INFO:tensorflow:Cifar10
+INFO:tensorflow:loading file: tmp/data/data_batch_1
+INFO:tensorflow:loading file: tmp/data/data_batch_2
+INFO:tensorflow:loading file: tmp/data/data_batch_3
+INFO:tensorflow:loading file: tmp/data/data_batch_4
+INFO:tensorflow:loading file: tmp/data/data_batch_5
+INFO:tensorflow:loading file: tmp/data/test_batch
+INFO:tensorflow:mean:[0.49139968, 0.48215841, 0.44653091]    std: [0.24703223, 0.24348513, 0.26158784]
+INFO:tensorflow:In CIFAR10 loader, number of images: 60000
+INFO:tensorflow:number of trainable params: 36220634
+INFO:tensorflow:number of trainable params: 36220634
+2019-01-09 13:41:21.603138: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-09 13:41:21.603174: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-09 13:41:21.603180: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-09 13:41:21.603186: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-09 13:41:21.603191: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-09 13:41:22.015581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:04:00.0
+Total memory: 10.92GiB
+Free memory: 10.76GiB
+2019-01-09 13:41:22.015632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-01-09 13:41:22.015643: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-01-09 13:41:22.015657: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-95
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-95
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 13:41:25.839208: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-95
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-95
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Before Training Epoch: 96     Val Acc: 0.0
+2019-01-09 13:41:27.988798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-95
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-95
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0531395259765 for epoch 96
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.866105794907
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 96
+INFO:tensorflow:Epoch time(min): 4.84908013344
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 13:46:18.933767: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-96
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-96
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 96    Valid Acc: 0.0
+2019-01-09 13:46:21.343361: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-96
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-96
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0523553225355 for epoch 97
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.866907060146
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 97
+INFO:tensorflow:Epoch time(min): 4.85331935088
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 13:51:12.542609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-97
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-97
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 97    Valid Acc: 0.0
+2019-01-09 13:51:15.169019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-97
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-97
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0515705379539 for epoch 98
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.866927087307
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 98
+INFO:tensorflow:Epoch time(min): 4.85217836698
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 13:56:06.299772: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-98
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-98
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 98    Valid Acc: 0.0
+2019-01-09 13:56:08.563794: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-98
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-98
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0507853658656 for epoch 99
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.86915063858
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 99
+INFO:tensorflow:Epoch time(min): 4.85210603476
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:00:59.690221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-99
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-99
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 99    Valid Acc: 0.0
+2019-01-09 14:01:02.108324: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-99
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-99
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.05 for epoch 100
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.86931091547
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 100
+INFO:tensorflow:Epoch time(min): 4.84868073463
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:05:53.029308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-100
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-100
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 100    Valid Acc: 0.0
+2019-01-09 14:05:55.422031: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-100
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-100
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0492146341344 for epoch 101
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.869591355324
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 101
+INFO:tensorflow:Epoch time(min): 4.86689593395
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:10:47.436299: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-101
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-101
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 101    Valid Acc: 0.0
+2019-01-09 14:10:50.163686: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-101
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-101
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0484294620461 for epoch 102
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.873717963696
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 102
+INFO:tensorflow:Epoch time(min): 4.89434401592
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:15:43.824762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-102
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-102
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 102    Valid Acc: 0.0
+2019-01-09 14:15:46.420659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-102
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-102
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0476446774645 for epoch 103
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.87305688858
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 103
+INFO:tensorflow:Epoch time(min): 4.85797795057
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:20:37.899462: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-103
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-103
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 103    Valid Acc: 0.0
+2019-01-09 14:20:40.148952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-103
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-103
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0468604740235 for epoch 104
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.875580906868
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 104
+INFO:tensorflow:Epoch time(min): 4.85534270207
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:25:31.469622: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-104
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-104
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 104    Valid Acc: 0.0
+2019-01-09 14:25:33.845823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-104
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-104
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0460770452136 for epoch 105
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.875500798225
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 105
+INFO:tensorflow:Epoch time(min): 4.84910124938
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:30:24.792017: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-105
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-105
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 105    Valid Acc: 0.0
+2019-01-09 14:30:27.335921: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-105
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-105
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0452945843341 for epoch 106
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.875380635262
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 106
+INFO:tensorflow:Epoch time(min): 4.85113158226
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:35:18.403971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-106
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-106
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 106    Valid Acc: 0.0
+2019-01-09 14:35:20.716005: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-106
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-106
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0445132844454 for epoch 107
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.876923084259
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 107
+INFO:tensorflow:Epoch time(min): 4.86311304967
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:40:12.502806: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-107
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-107
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 107    Valid Acc: 0.0
+2019-01-09 14:40:14.946306: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-107
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-107
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0437333383218 for epoch 108
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.876602590084
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 108
+INFO:tensorflow:Epoch time(min): 4.85434458653
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:45:06.207164: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-108
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-108
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 108    Valid Acc: 0.0
+2019-01-09 14:45:08.698097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-108
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-108
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0429549384031 for epoch 109
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.877323746681
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 109
+INFO:tensorflow:Epoch time(min): 4.84971978664
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:49:59.681298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-109
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-109
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 109    Valid Acc: 0.0
+2019-01-09 14:50:02.198884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-109
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-109
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.042178276748 for epoch 110
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.879487156868
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 110
+INFO:tensorflow:Epoch time(min): 4.86163203319
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:54:53.896898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-110
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-110
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 110    Valid Acc: 0.0
+2019-01-09 14:54:56.109776: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-110
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-110
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.041403544986 for epoch 111
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.883413434029
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 111
+INFO:tensorflow:Epoch time(min): 4.85561280251
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 14:59:47.446635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-111
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-111
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 111    Valid Acc: 0.0
+2019-01-09 14:59:49.830635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-111
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-111
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0406309342707 for epoch 112
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.882592141628
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 112
+INFO:tensorflow:Epoch time(min): 4.86357421875
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:04:41.645223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-112
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-112
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 112    Valid Acc: 0.0
+2019-01-09 15:04:44.164475: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-112
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-112
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0398606352322 for epoch 113
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.883553683758
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 113
+INFO:tensorflow:Epoch time(min): 4.85105621815
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:09:35.225693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-113
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-113
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 113    Valid Acc: 0.0
+2019-01-09 15:09:37.541446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-113
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-113
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0390928379302 for epoch 114
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.886498391628
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 114
+INFO:tensorflow:Epoch time(min): 4.85497433345
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:14:28.840075: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-114
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-114
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 114    Valid Acc: 0.0
+2019-01-09 15:14:31.121935: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-114
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-114
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0383277318072 for epoch 115
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.886939108372
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 115
+INFO:tensorflow:Epoch time(min): 4.85900430282
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:19:22.662237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-115
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-115
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 115    Valid Acc: 0.0
+2019-01-09 15:19:25.149413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-115
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-115
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0375655056418 for epoch 116
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.888141036034
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 116
+INFO:tensorflow:Epoch time(min): 4.85577348471
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:24:16.495835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-116
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-116
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 116    Valid Acc: 0.0
+2019-01-09 15:24:18.852061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-116
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-116
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0368063475017 for epoch 117
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.886338114738
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 117
+INFO:tensorflow:Epoch time(min): 4.86126170158
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:29:10.527893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-117
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-117
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 117    Valid Acc: 0.0
+2019-01-09 15:29:12.865971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-117
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-117
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.036050444698 for epoch 118
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.889763593674
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 118
+INFO:tensorflow:Epoch time(min): 4.8482178847
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:34:03.759088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-118
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-118
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 118    Valid Acc: 0.0
+2019-01-09 15:34:06.338252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-118
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-118
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0352979837384 for epoch 119
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.891646623611
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 119
+INFO:tensorflow:Epoch time(min): 4.85574848255
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:38:57.683255: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-119
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-119
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 119    Valid Acc: 0.0
+2019-01-09 15:38:59.979231: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-119
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-119
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0345491502813 for epoch 120
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.893068909645
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 120
+INFO:tensorflow:Epoch time(min): 4.85370914936
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:43:51.201953: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-120
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-120
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 120    Valid Acc: 0.0
+2019-01-09 15:43:53.426925: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-120
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-120
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0338041290901 for epoch 121
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.892808496952
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 121
+INFO:tensorflow:Epoch time(min): 4.86298183203
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:48:45.205903: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-121
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-121
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 121    Valid Acc: 0.0
+2019-01-09 15:48:47.584328: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-121
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-121
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0330631039877 for epoch 122
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.894310891628
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 122
+INFO:tensorflow:Epoch time(min): 4.86991159916
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:53:39.779079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-122
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-122
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 122    Valid Acc: 0.0
+2019-01-09 15:53:42.053454: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-122
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-122
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.032326257811 for epoch 123
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.895572900772
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 123
+INFO:tensorflow:Epoch time(min): 4.85915879806
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 15:58:33.603131: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-123
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-123
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 123    Valid Acc: 0.0
+2019-01-09 15:58:36.107906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-123
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-123
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0315937723658 for epoch 124
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.895713150501
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 124
+INFO:tensorflow:Epoch time(min): 4.8603973031
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:03:27.731741: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-124
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-124
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 124    Valid Acc: 0.0
+2019-01-09 16:03:30.133630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-124
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-124
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0308658283817 for epoch 125
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.895993590355
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 125
+INFO:tensorflow:Epoch time(min): 4.86183126767
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:08:21.843577: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-125
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-125
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 125    Valid Acc: 0.0
+2019-01-09 16:08:24.157791: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-125
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-125
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0301426054683 for epoch 126
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.89825719595
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 126
+INFO:tensorflow:Epoch time(min): 4.86059578657
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:13:15.795453: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-126
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-126
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 126    Valid Acc: 0.0
+2019-01-09 16:13:18.112259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-126
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-126
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0294242820697 for epoch 127
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.899218738079
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 127
+INFO:tensorflow:Epoch time(min): 4.86612648169
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:18:10.079865: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-127
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-127
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 127    Valid Acc: 0.0
+2019-01-09 16:18:12.419455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-127
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-127
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0287110354217 for epoch 128
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.90216344595
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 128
+INFO:tensorflow:Epoch time(min): 4.85591818492
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:23:03.776319: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-128
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-128
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 128    Valid Acc: 0.0
+2019-01-09 16:23:06.049389: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-128
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-128
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0280030415072 for epoch 129
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.901883006096
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 129
+INFO:tensorflow:Epoch time(min): 4.85322653055
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:27:57.243051: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-129
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-129
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 129    Valid Acc: 0.0
+2019-01-09 16:27:59.576114: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-129
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-129
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.027300475013 for epoch 130
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.906730771065
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 130
+INFO:tensorflow:Epoch time(min): 4.85264108578
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:32:50.734583: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-130
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-130
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 130    Valid Acc: 0.0
+2019-01-09 16:32:53.046341: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-130
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-130
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.026603509287 for epoch 131
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.90446716547
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 131
+INFO:tensorflow:Epoch time(min): 4.85759433111
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:37:44.502030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-131
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-131
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 131    Valid Acc: 0.0
+2019-01-09 16:37:46.719085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-131
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-131
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0259123162949 for epoch 132
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.907031238079
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 132
+INFO:tensorflow:Epoch time(min): 4.85995188554
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:42:38.314403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-132
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-132
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 132    Valid Acc: 0.0
+2019-01-09 16:42:40.669604: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-132
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-132
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0252270665784 for epoch 133
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.906931102276
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 133
+INFO:tensorflow:Epoch time(min): 4.85346459945
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:47:31.877681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-133
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-133
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 133    Valid Acc: 0.0
+2019-01-09 16:47:34.193552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-133
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-133
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0245479292125 for epoch 134
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.909535229206
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 134
+INFO:tensorflow:Epoch time(min): 4.85733211835
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:52:25.633509: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-134
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-134
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 134    Valid Acc: 0.0
+2019-01-09 16:52:27.868726: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-134
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-134
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0238750717642 for epoch 135
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.908914268017
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 135
+INFO:tensorflow:Epoch time(min): 4.8585406661
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 16:57:19.381305: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-135
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-135
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 135    Valid Acc: 0.0
+2019-01-09 16:57:21.658189: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-135
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-135
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0232086602511 for epoch 136
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.91209936142
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 136
+INFO:tensorflow:Epoch time(min): 4.85963396629
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:02:13.236386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-136
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-136
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 136    Valid Acc: 0.0
+2019-01-09 17:02:15.707171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-136
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-136
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0225488591001 for epoch 137
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.914923906326
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 137
+INFO:tensorflow:Epoch time(min): 4.88637350003
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:07:08.889572: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-137
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-137
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 137    Valid Acc: 0.0
+2019-01-09 17:07:11.206617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-137
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-137
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0218958311074 for epoch 138
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.917648255825
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 138
+INFO:tensorflow:Epoch time(min): 4.8768530488
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:12:03.817835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-138
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-138
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 138    Valid Acc: 0.0
+2019-01-09 17:12:06.091454: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-138
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-138
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0212497373978 for epoch 139
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.915865361691
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 139
+INFO:tensorflow:Epoch time(min): 4.85828950008
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:16:57.589109: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-139
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-139
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 139    Valid Acc: 0.0
+2019-01-09 17:16:59.895091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-139
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-139
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0206107373854 for epoch 140
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.917307674885
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 140
+INFO:tensorflow:Epoch time(min): 4.86082801819
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:21:51.544936: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-140
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-140
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 140    Valid Acc: 0.0
+2019-01-09 17:21:53.836711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-140
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-140
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0199789887337 for epoch 141
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.918108999729
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 141
+INFO:tensorflow:Epoch time(min): 4.85243618488
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:26:44.982994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-141
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-141
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 141    Valid Acc: 0.0
+2019-01-09 17:26:47.253887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-141
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-141
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0193546473174 for epoch 142
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.921875
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 142
+INFO:tensorflow:Epoch time(min): 4.85271498362
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:31:38.414593: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-142
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-142
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 142    Valid Acc: 0.0
+2019-01-09 17:31:40.743047: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-142
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-142
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0187378671832 for epoch 143
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+INFO:tensorflow:Training 360/390
+INFO:tensorflow:Training 380/390
+INFO:tensorflow:Train accuracy: 0.922656238079
+INFO:tensorflow:Saving model after epoch
+INFO:tensorflow:Saved child model
+INFO:tensorflow:Finished epoch: 143
+INFO:tensorflow:Epoch time(min): 4.86290324926
+INFO:tensorflow:Evaluating child model in mode val
+2019-01-09 17:36:32.515297: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-143
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-143
+INFO:tensorflow:model.batch_size is 25
+INFO:tensorflow:Eval child model accuracy: 0.0
+INFO:tensorflow:Epoch: 143    Valid Acc: 0.0
+2019-01-09 17:36:34.957141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0)
+INFO:tensorflow:Restoring parameters from tmp/training/model/model.ckpt-143
+INFO:tensorflow:Loaded child model checkpoint from tmp/training/model/model.ckpt-143
+INFO:tensorflow:steps per epoch: 390
+INFO:tensorflow:lr of 0.0181288005126 for epoch 144
+INFO:tensorflow:Training 0/390
+INFO:tensorflow:Training 20/390
+INFO:tensorflow:Training 40/390
+INFO:tensorflow:Training 60/390
+INFO:tensorflow:Training 80/390
+INFO:tensorflow:Training 100/390
+INFO:tensorflow:Training 120/390
+INFO:tensorflow:Training 140/390
+INFO:tensorflow:Training 160/390
+INFO:tensorflow:Training 180/390
+INFO:tensorflow:Training 200/390
+INFO:tensorflow:Training 220/390
+INFO:tensorflow:Training 240/390
+INFO:tensorflow:Training 260/390
+INFO:tensorflow:Training 280/390
+INFO:tensorflow:Training 300/390
+INFO:tensorflow:Training 320/390
+INFO:tensorflow:Training 340/390
+User defined signal 2
