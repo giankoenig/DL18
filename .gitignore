@@ -12,3 +12,6 @@ autoaugment_proposal/dlproposal.pdf
 autoaugment_final/*.aux
 autoaugment_final/*.log
 autoaugment_final/*.syntex.gz
+autoaugment_final/*.pdf
+autoaugment_final/*.blg
+.DS_Store
