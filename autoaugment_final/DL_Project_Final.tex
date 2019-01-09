@@ -76,15 +76,15 @@ The next steps will be to make the search space continuous and integrate the Hyp
 \section{Infrastructure}
 A first attempt to run the code on the CPU: MacBook Pro (Retina, 15-inch, Early 2013) with the following specifications 2.4 GHz Intel Core i7, 16 GB 1600 MHz DDR3, Intel HD Graphics 4000 1536 MB, macOS Sierra 10.12.5. This resulted in a Training Time: INFO:tensorflow:Finished epoch: 0, INFO:tensorflow:Epoch time(min): 332.059691219. \newline
 
-We tried to execute the code on the Leonhard Cluster\footnote{https://scicomp.ethz.ch/wiki/Leonhard}. For this the following commands were necessary. 1) ssh koenigg@login.leonhard.ethz.ch 2) Create folders and git clone and upload the data from PC rsync -Pav ~/Dropbox/CAS/DL/DL18/autoaugment/tmp/data/ koenigg@login.leonhard.ethz.ch:/cluster/home/koenigg/DL\_Project 3) module load python\_gpu/2.7.13 (module list: Currently Loaded Modules: 1) StdEnv   2) gcc/4.8.5   3) openblas/0.2.19   4) cuda/8.0.61   5) cudnn/6.0   6) jpeg/9b   7) libpng/1.6.27   8) python\_gpu/2.7.13) 4) Execute the code: bsub -n 20 -R "rusage[mem=4500,ngpus\_excl\_p=1]" python train\_cifar.py --model\_name=wrn --checkpoint\_dir=tmp/training/ --data\_path=tmp/data/ --dataset='cifar10' --use\_cpu=0. It turns out on the Leonhard Cluster we can only use 1 GPU which is not enough for our dataset.\newline
+We tried to execute the code on the Leonhard Cluster\footnote{https://scicomp.ethz.ch/wiki/Leonhard}. For this the following commands were necessary. 1) ssh koenigg@login.leonhard.ethz.ch 2) Create folders and git clone and upload the data from PC rsync -Pav ~/Dropbox/CAS/DL/DL18/autoaugment/tmp/data/ koenigg@login.leonhard.ethz.ch:/cluster/home/koenigg/DL\_Project 3) module load python\_gpu/2.7.13 (module list: Currently Loaded Modules: 1) StdEnv   2) gcc/4.8.5   3) openblas/0.2.19   4) cuda/8.0.61   5) cudnn/6.0   6) jpeg/9b   7) libpng/1.6.27   8) python\_gpu/2.7.13) 4) Execute the code: bsub -n 20 -R "rusage[mem=4500,ngpus\_excl\_p=1]" python train\_cifar.py --model\_name=wrn --checkpoint\_dir=tmp/training/ --data\_path=tmp/data/ --dataset='cifar10' --use\_cpu=0. It turns out on the Leonhard Cluster we can only use 1 GPU which is not enough for our dataset. For this run, we could analyze the output using 'grep -A3 "Creating TensorFlow device" lsf.o1058716' which shows that in 4 hours only 47 epochs were executed. From the data below we can see that one epoch uses approximately 5 minutes. \textbf{Note}: Usefull commands: bjobs to show the jobs (with option -l for more details), module avail to show available modules, module list to show loaded modules, ls -l --block-size=M to show detailed files with size in MB. \newline
 
 [koenigg@lo-login-02 model]\$ ls -l
 total 570652
 -rw-rw---- 1 koenigg koenigg-group       127 Jan  8 13:49 checkpoint
--rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 13:44 model.ckpt-40.data-00000-of-00001
+-rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 \textbf{13:44} model.ckpt-40.data-00000-of-00001
 -rw-rw---- 1 koenigg koenigg-group      9868 Jan  8 13:44 model.ckpt-40.index
 -rw-rw---- 1 koenigg koenigg-group   1163579 Jan  8 13:44 model.ckpt-40.meta
--rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 13:49 model.ckpt-41.data-00000-of-00001
+-rw-rw---- 1 koenigg koenigg-group 289836892 Jan  8 \textbf{13:49} model.ckpt-41.data-00000-of-00001
 -rw-rw---- 1 koenigg koenigg-group      9868 Jan  8 13:49 model.ckpt-41.index
 -rw-rw---- 1 koenigg koenigg-group   1163579 Jan  8 13:49 model.ckpt-41.meta
 

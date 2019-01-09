@@ -27,6 +27,11 @@ import numpy as np
 import policies as found_policies
 import tensorflow as tf
 
+import matplotlib.pyplot as plt
+import time
+
+timestr = time.strftime("%Y%m%d-%H%M%S")
+
 
 # pylint:disable=logging-format-interpolation
 
@@ -149,6 +154,8 @@ class DataSet(object):
     final_imgs = []
 
     images, labels = batched_data
+
+
     for data in images:
       epoch_policy = self.good_policies[np.random.choice(
           len(self.good_policies))]
@@ -161,6 +168,29 @@ class DataSet(object):
       final_imgs.append(final_img)
     batched_data = (np.array(final_imgs, np.float32), labels)
     self.curr_train_index += self.hparams.batch_size
+
+    ##########################################################
+
+    num_rows = 5
+    num_cols = 3
+    num_images = num_rows*num_cols
+    plt.figure(figsize=(2*2*num_cols, 2*num_rows))
+    for i in range(num_images):
+      arr = images[i]
+      arr2 = final_imgs[i]
+
+      R1 = arr[:,:,0]
+      R2 = arr2[:,:,0]
+
+      plt.subplot(num_rows, 2*num_cols, 2*i+1)
+      plt.imshow(R1,interpolation='bicubic')
+      plt.subplot(num_rows, 2*num_cols, 2*i+2)
+      plt.imshow(R2,interpolation='bicubic')
+    plt.savefig('policy_examples_'+str(timestr)+'.png')
+    plt.close('all')
+
+    ##########################################################
+
     return batched_data
 
   def reset(self):

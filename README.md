@@ -50,6 +50,12 @@ https://arxiv.org/pdf/1012.2599.pdf
 	INFO:tensorflow:Finished epoch: 0
 	INFO:tensorflow:Epoch time(min): 332.059691219
 
+# Leonhard Cluster
+- Connect to cluster: ssh koenigg@login.leonhard.ethz.ch
+- Create folder on cluster
+- Load data to cluster: rsync -Pav ~/Dropbox/CAS/DL/DL18/autoaugment koenigg@login.leonhard.ethz.ch:/cluster/home/koenigg/DL_Project (run on PC)
+- Available modules: module avail
+- Currently loaded modules: module list
 
 # Other Stuff
 ## Video Classification
