@@ -22,6 +22,8 @@ from __future__ import print_function
 import numpy as np
 import tensorflow as tf
 
+import matplotlib.pyplot as plt
+
 
 def setup_loss(logits, labels):
   """Returns the cross entropy for the given `logits` and `labels`."""
@@ -137,6 +139,7 @@ def run_epoch_training(session, model, data_loader, curr_epoch):
       tf.logging.info('Training {}/{}'.format(step, steps_per_epoch))
 
     train_images, train_labels = data_loader.next_batch()
+
     _, step, _ = session.run(
         [model.train_op, model.global_step, model.eval_op],
         feed_dict={
