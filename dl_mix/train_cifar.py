@@ -22,6 +22,7 @@ from __future__ import print_function
 
 import contextlib
 import os
+import sys
 import time
 
 import custom_ops as ops
@@ -397,26 +398,28 @@ class CifarModelTrainer(object):
     return self._num_trainable_params
 
 
-def main(_):
-  if FLAGS.dataset not in ['cifar10', 'cifar100']:
-    raise ValueError('Invalid dataset: %s' % FLAGS.dataset)
-  hparams = tf.contrib.training.HParams(
-      train_size=4000,
-      validation_size=0,
-      eval_test=1,
-      dataset=FLAGS.dataset,
-      data_path=FLAGS.data_path,
-      batch_size=25,
-      gradient_clipping_by_global_norm=5.0)
+def main():
+  return 'hi'
+  
+#   if FLAGS.dataset not in ['cifar10', 'cifar100']:
+#     raise ValueError('Invalid dataset: %s' % FLAGS.dataset)
+#   hparams = tf.contrib.training.HParams(
+#       train_size=4000,
+#       validation_size=0,
+#       eval_test=1,
+#       dataset=FLAGS.dataset,
+#       data_path=FLAGS.data_path,
+#       batch_size=25,
+#       gradient_clipping_by_global_norm=5.0)
 
-  hparams.add_hparam('model_name', 'wrn')
-  hparams.add_hparam('num_epochs', 120)
-  hparams.add_hparam('wrn_size', 32)
-  hparams.add_hparam('lr', 0.1)
-  hparams.add_hparam('weight_decay_rate', 5e-4)
+#   hparams.add_hparam('model_name', 'wrn')
+#   hparams.add_hparam('num_epochs', 120)
+#   hparams.add_hparam('wrn_size', 32)
+#   hparams.add_hparam('lr', 0.1)
+#   hparams.add_hparam('weight_decay_rate', 5e-4)
     
-  cifar_trainer = CifarModelTrainer(hparams)
-  cifar_trainer.run_model()
+#   cifar_trainer = CifarModelTrainer(hparams)
+#   cifar_trainer.run_model()
 
 if __name__ == '__main__':
   tf.logging.set_verbosity(tf.logging.INFO)

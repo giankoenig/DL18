@@ -1,4 +1,3 @@
-import train_cifar
 import eval_wrn40_2
 
 import numpy as np
