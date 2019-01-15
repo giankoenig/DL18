@@ -51,7 +51,7 @@ def eval_fake(args):
 def run_trial():
   
   trials_step = 1  # how many additional trials to do after loading saved trials. 1 = save after iteration
-  max_trials = 0  # initial max_trials. put something small to not have to wait
+  max_trials = 1  # initial max_trials. put something small to not have to wait
   model_name = 'eval_trials_wrn_40_2.hyperopt'
   
   try:  # try to load an already saved trials object, and increase the max
