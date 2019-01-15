@@ -32,18 +32,6 @@ import tensorflow as tf
 from wrn import build_wrn_model
 
 
-
-
-tf.flags.DEFINE_string('model_name', 'wrn',
-                       'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
-                       'pyramid_net')
-tf.flags.DEFINE_string('checkpoint_dir', '/tmp/training', 'Training Directory.')
-tf.flags.DEFINE_string('data_path', '/tmp/data',
-                       'Directory where dataset is located.')
-tf.flags.DEFINE_string('dataset', 'cifar10',
-                       'Dataset to train with. Either cifar10 or cifar100')
-tf.flags.DEFINE_integer('use_cpu', 1, '1 if use CPU, else GPU.')
-
 FLAGS = tf.flags.FLAGS
 
 arg_scope = tf.contrib.framework.arg_scope
@@ -383,6 +371,8 @@ class CifarModelTrainer(object):
     tf.logging.info(
         'Train Acc: {}    Valid Acc: {}     Test Acc: {}'.format(
             training_accuracy, valid_accuracy, test_accuracy))
+    
+    return [training_accuracy, valid_accuracy, test_accuracy]
 
   @property
   def saver(self):
@@ -397,31 +387,26 @@ class CifarModelTrainer(object):
     return self._num_trainable_params
 
 
-def main(test_policies):
-  print('*')
-  # if FLAGS.dataset not in ['cifar10', 'cifar100']:
-  #   raise ValueError('Invalid dataset: %s' % FLAGS.dataset)
-  # hparams = tf.contrib.training.HParams(
-  #     train_size=4000,
-  #     validation_size=0,
-  #     eval_test=1,
-  #     dataset=FLAGS.dataset,
-  #     data_path=FLAGS.data_path,
-  #     batch_size=25,
-  #     gradient_clipping_by_global_norm=5.0)
+def main(_):
+  if FLAGS.dataset not in ['cifar10', 'cifar100']:
+    raise ValueError('Invalid dataset: %s' % FLAGS.dataset)
+  hparams = tf.contrib.training.HParams(
+      train_size=4000,
+      validation_size=0,
+      eval_test=1,
+      dataset=FLAGS.dataset,
+      data_path=FLAGS.data_path,
+      batch_size=25,
+      gradient_clipping_by_global_norm=5.0)
 
-  # hparams.add_hparam('model_name', 'wrn')
-  # hparams.add_hparam('num_epochs', 120)
-  # hparams.add_hparam('wrn_size', 32)
-  # hparams.add_hparam('lr', 0.1)
-  # hparams.add_hparam('weight_decay_rate', 5e-4)
-
-  # hparams.add_hparam('policy1',test_policies[0])
-  # print(test_policies[0])
-  # quit()
+  hparams.add_hparam('model_name', 'wrn')
+  hparams.add_hparam('num_epochs', 120)
+  hparams.add_hparam('wrn_size', 32)
+  hparams.add_hparam('lr', 0.1)
+  hparams.add_hparam('weight_decay_rate', 5e-4)
     
-  # cifar_trainer = CifarModelTrainer(hparams)
-  # cifar_trainer.run_model()
+  cifar_trainer = CifarModelTrainer(hparams)
+  cifar_trainer.run_model()
 
 if __name__ == '__main__':
   tf.logging.set_verbosity(tf.logging.INFO)
