@@ -1,8 +1,10 @@
 import train_cifar
 
+from hyperopt import hp, fmin, tpe, Trials
+
 import numpy as np
 import matplotlib.pyplot as plt
-from hyperopt import hp, fmin, tpe, Trials
+import pickle
 
 # define parameter ranges
 
@@ -19,22 +21,110 @@ def wrn40_2(args):
 
 	return acc
 
-trials = Trials()
-# available policies
-policies = [hp.uniform('ShearX', -0.3, 0.3), 
-			hp.uniform('TranslateX', -150,150),
-			hp.uniform('Rotate', -30, 30),
-			hp.randint('AutoContrast', 1),
-			hp.randint('Invert', 1),
-        	hp.randint('Equalize', 1),
-         	hp.uniform('Solarize', 0, 256),
-         	hp.uniform('Polarize', 4, 8),
-         	hp.uniform('Constrast', 0.1, 1.9),
-         	hp.uniform('Color', 0.1, 1.9),
-         	hp.uniform('Brightness', 0.1, 1.9),
-        	hp.uniform('Sharpness', 0.1, 1.9),
-         	hp.uniform('Cutout', 0, 60),
-        	hp.uniform('SamplePairing', 0, 0.4)] 
+try:  # try to load an already saved trials object, and increase the max
+	trials = pickle.load(open("my_model.hyperopt", "rb"))x
+	print("Found saved Trials! Loading...")
+	max_trials = len(trials.trials) + trials_step
+	print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
+except:  # create a new trials object and start searching
+	trials = Trials()
+	
+# available policies: Section 2.2 in https://github.com/hyperopt/hyperopt/wiki/FMin
+sspace1 = hp.choice('transformations', [
+	{'type': 'ShearX',hp.uniform('Prob_ShearX', 0, 1),hp.uniform('Mag_ShearX', -0.3, 0.3), },
+	{'type': 'TranslateX',hp.uniform('Prob_TranslateX', 0, 1),hp.uniform('Mag_TranslateX', -150,150),},
+	{'type': 'ShearY',hp.uniform('Prob_ShearY', 0, 1),hp.uniform('Mag_ShearY', -0.3, 0.3), },
+	{'type': 'TranslateY',hp.uniform('Prob_TranslateY', 0, 1),hp.uniform('Mag_TranslateY', -150,150),},
+	{'type': 'Rotate',hp.uniform('Prob_Rotate', 0, 1),hp.uniform('Mag_Rotate', -30, 30),},
+	{'type': 'AutoContrast',hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),},
+	{'type': 'Invert',hp.uniform('Prob_Invert', 0, 1),hp.randint('Mag_Invert', 1),},
+	{'type': 'Equalize',hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),},
+ 	{'type': 'Solarize',hp.uniform('Prob_Solarize', 0, 1),hp.uniform('Mag_Solarize', 0, 256),},
+ 	{'type': 'Polarize',hp.uniform('Prob_Polarize', 0, 1),hp.uniform('Mag_Polarize', 4, 8),},
+ 	{'type': 'Constrast',hp.uniform('Prob_Constrast', 0, 1),hp.uniform('Mag_Constrast', 0.1, 1.9),},
+ 	{'type': 'Color',hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),},
+ 	{'type': 'Brightness',hp.uniform('Prob_Brightness', 0, 1),hp.uniform('Mag_Brightness', .1, 1.9),},
+	{'type': 'Sharpness',hp.uniform('Prob_Sharpness', 0, 1),hp.uniform('Mag_Sharpness', 0.1, 1.9),},
+ 	{'type': 'Cutout',hp.uniform('Prob_Cutout', 0, 1),hp.uniform('Mag_Cutout', 0, 60),},
+	{'type': 'SamplePairing',hp.uniform('Prob_SamplePairing', 0, 1),hp.uniform('Mag_SamplePairing', 0, 0.4),},])
+
+sspace2 = hp.choice('policies', [
+	{'sub_policy_0': 'Invert_Contrast',
+		hp.uniform('Prob_Invert', 0, 1),hp.randint('Mag_Invert', 1),
+		hp.uniform('Prob_Constrast', 0, 1),hp.uniform('Mag_Constrast', 0.1, 1.9),},
+	{'sub_policy_1': 'Rotate_TranslateX',
+		hp.uniform('Prob_Rotate', 0, 1),hp.uniform('Mag_Rotate', -30, 30),
+		hp.uniform('Prob_TranslateX', 0, 1),hp.uniform('Mag_TranslateX', -150,150),},
+	{'sub_policy_2': 'Sharpness_Sharpness',
+		hp.uniform('Prob_Sharpness1', 0, 1),hp.uniform('Mag_Sharpness1', 0.1, 1.9),
+		hp.uniform('Prob_Sharpness2', 0, 1),hp.uniform('Mag_Sharpness2', 0.1, 1.9),},
+	{'sub_policy_3': 'ShearY_TranslateY',
+		hp.uniform('Prob_ShearY', 0, 1),hp.uniform('Mag_ShearY', -0.3, 0.3),
+		hp.uniform('Prob_TranslateY', 0, 1),hp.uniform('Mag_TranslateY', -150,150),},
+	{'sub_policy_4': 'AutoContrast_Equalize',
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),
+		hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),},
+	{'sub_policy_5': 'ShearY_TranslateY',
+		hp.uniform('Prob_ShearY', 0, 1),hp.uniform('Mag_ShearY', -0.3, 0.3),
+		hp.uniform('Prob_TranslateY', 0, 1),hp.uniform('Mag_TranslateY', -150,150),},
+	{'sub_policy_6': 'Color_Brightness',
+		hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),
+		hp.uniform('Prob_Brightness', 0, 1),hp.uniform('Mag_Brightness', .1, 1.9),},
+	{'sub_policy_7': 'Sharpness_Brightness',
+		hp.uniform('Prob_Sharpness', 0, 1),hp.uniform('Mag_Sharpness', 0.1, 1.9),
+		hp.uniform('Prob_Brightness', 0, 1),hp.uniform('Mag_Brightness', .1, 1.9),},
+	{'sub_policy_8': 'Equalize_Equalize',
+		hp.uniform('Prob_Equalize1', 0, 1),hp.randint('Mag_Equalize1', 1),
+		hp.uniform('Prob_Equalize2', 0, 1),hp.randint('Mag_Equalize2', 1),},
+	{'sub_policy_9': 'Contrast_Sharpness',
+		hp.uniform('Prob_Constrast', 0, 1),hp.uniform('Mag_Constrast', 0.1, 1.9),
+		hp.uniform('Prob_Sharpness', 0, 1),hp.uniform('Mag_Sharpness', 0.1, 1.9),},
+	{'sub_policy_10': 'Color_TranslateX',
+		hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),
+		hp.uniform('Prob_TranslateX', 0, 1),hp.uniform('Mag_TranslateX', -150,150),},
+	{'sub_policy_11': 'Equalize_AutoContrast',
+		hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),},
+	{'sub_policy_12': 'TranslateY_Sharpness',
+		hp.uniform('Prob_TranslateY', 0, 1),hp.uniform('Mag_TranslateY', -150,150),
+		hp.uniform('Prob_Sharpness', 0, 1),hp.uniform('Mag_Sharpness', 0.1, 1.9),},
+	{'sub_policy_13': 'Brightness_Color',
+		hp.uniform('Prob_Brightness', 0, 1),hp.uniform('Mag_Brightness', .1, 1.9),
+		hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),},
+	{'sub_policy_14': 'Solarize_Invert',
+		hp.uniform('Prob_Polarize', 0, 1),hp.uniform('Mag_Polarize', 4, 8),
+		hp.uniform('Prob_Invert', 0, 1),hp.randint('Mag_Invert', 1),},
+	{'sub_policy_15': 'Equalize_AutoContrast',
+		hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),},
+	{'sub_policy_16': 'Equalize_Equalize',
+		hp.uniform('Prob_Equalize1', 0, 1),hp.randint('Mag_Equalize1', 1),
+		hp.uniform('Prob_Equalize2', 0, 1),hp.randint('Mag_Equalize2', 1),},
+	{'sub_policy_17': 'Color_Equalize',
+		hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),
+		hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),},
+	{'sub_policy_18': 'AutoContrast_Solarize',
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),
+		hp.uniform('Prob_Polarize', 0, 1),hp.uniform('Mag_Polarize', 4, 8),},
+	{'sub_policy_19': 'Brightness_Color',
+		hp.uniform('Prob_Brightness', 0, 1),hp.uniform('Mag_Brightness', .1, 1.9),
+		hp.uniform('Prob_Color', 0, 1),hp.uniform('Mag_Color', 0.1, 1.9),},
+	{'sub_policy_20': 'Solarize_AutoContrast',
+		hp.uniform('Prob_Polarize', 0, 1),hp.uniform('Mag_Polarize', 4, 8),
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),},
+	{'sub_policy_21': 'TranslateY_TranslateY',
+		hp.uniform('Prob_TranslateY1', 0, 1),hp.uniform('Mag_TranslateY1', -150,150),
+		hp.uniform('Prob_TranslateY2', 0, 1),hp.uniform('Mag_TranslateY2', -150,150),},
+	{'sub_policy_22': 'AutoContrast_Solarize',
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),
+		hp.uniform('Prob_Polarize', 0, 1),hp.uniform('Mag_Polarize', 4, 8),},
+	{'sub_policy_23': 'Equalize_Invert',
+		hp.uniform('Prob_Equalize', 0, 1),hp.randint('Mag_Equalize', 1),
+		hp.uniform('Prob_Invert', 0, 1),hp.randint('Mag_Invert', 1),},
+	{'sub_policy_24': 'TranslateY_AutoContrast',
+		hp.uniform('Prob_TranslateY', 0, 1),hp.uniform('Mag_TranslateY', -150,150),
+		hp.uniform('Prob_AutoContrast', 0, 1),hp.randint('Mag_AutoContrast', 1),},])
+
 # create search space
 # 1 policy consists of 5 sub-policies (from policies) with two hyper-parameters (probabilty + magnitude)
 # 
@@ -47,19 +137,27 @@ x1 = np.arange(-4, 4, 0.1)
 x2 = np.arange(-4, 4, 0.1)
 x3 = np.arange(-4, 4, 0.1)
 
-best = fmin(wrn40_2,
-    space=sspace,    
-    algo=tpe.suggest,
-    max_evals=500,
-    trials=trials)
 
-print(best)
+for curr_epoch in xrange(starting_epoch, hparams.num_epochs):
 
-losses = []
-vals = []
-for t in trials.trials:
-    losses.append(t['result']['loss'])
-    vals.append(t['misc']['vals']['x1'])
+	try:  # try to load an already saved trials object, and increase the max
+		trials = pickle.load(open("my_model.hyperopt", "rb"))x
+		print("Found saved Trials! Loading...")
+		max_trials = len(trials.trials) + trials_step
+		print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
+	except:  # create a new trials object and start searching
+		trials = Trials()
 
-plt.plot(losses)
-plt.show()
+	best = fmin(x,
+    	space=sspace,    
+    	algo=tpe.suggest,
+    	max_evals=500,
+    	trials=trials)
+
+	print('Best: ', best)
+
+	# save the trials object
+	model_name = 
+    with open(_model + ".hyperopt", "wb") as f:
+        pickle.dump(trials, f)
+
