@@ -1,6 +1,6 @@
 import train_cifar
 
-from hyperopt import hp, fmin, tpe, Trials
+from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -164,11 +164,7 @@ def wrn40_2(args):
 	x3 = args[2]
 	a = 3
 	b = 100
-	acc = (a - x1)**2 + b*(x2 - x1**2)**2+x3**2
-
-	print(acc)
-
-	return acc
+	return {'loss': (a - x1)**2 + b*(x2 - x1**2)**2+x3**2, 'status': STATUS_OK }
 
 sspace = [hp.uniform('x1', -100, 100), 
           hp.uniform('x2', -100, 100),
@@ -178,32 +174,38 @@ x1 = np.arange(-4, 4, 0.1)
 x2 = np.arange(-4, 4, 0.1)
 x3 = np.arange(-4, 4, 0.1)
 
-trials = Trials()
+args= 500
 
+def run_trials(args):
 
-def run_trials():
+	trials_step = 1  # how many additional trials to do after loading saved trials. 1 = save after iteration
+	#max_trials = 5  # initial max_trials. put something small to not have to wait
+	max_trials = args
+	model_name = 'wrn40_2_max_trials{}.hyperopt'.format(max_trials)
 
-	# model_name = 'wrn40_2_curr_epoch_{}.hyperopt'.format(curr_epoch)
-	# try:  # try to load an already saved trials object, and increase the max
-	# 	trials = pickle.load(open(model_name, "rb"))
-	# 	print("Found saved Trials! Loading...")
-	# 	max_trials = len(trials.trials) + trials_step
-	# 	print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
-	# except:  # create a new trials object and start searching
-	# 	trials = Trials()
+	try:  # try to load an already saved trials object, and increase the max
+		trials = pickle.load(open(model_name, "rb"))
+		print("Found saved Trials! Loading...")
+		# max_trials = len(trials.trials) + trials_step
+		print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
+	except:  # create a new trials object and start searching
+		trials = Trials()
 
 	best = fmin(wrn40_2,
     	space=sspace,    
     	algo=tpe.suggest,
-    	max_evals=500,
+    	max_evals=1500,
     	trials=trials)
 
 	print('Best: ', best)
 
-	# # save the trials object
- #    with open(model_name, "wb") as f:
- #        pickle.dump(trials, f)
+	# save the trials object
+	with open(model_name, "wb") as f:
+		pickle.dump(trials, f)
+
+	if len(trials.trials) % 20 == 0:
+		quit()
 
 while True:
-    run_trials()
+    run_trials(args)
 
