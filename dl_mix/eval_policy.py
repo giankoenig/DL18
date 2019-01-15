@@ -4,6 +4,7 @@ import shutil
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
 from search_space import SearchSpace
 import pickle
+import os, errno
 
 tf.flags.DEFINE_string('model_name', 'wrn',
                        'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
@@ -29,7 +30,7 @@ def eval_wrn_40_2(args):
       gradient_clipping_by_global_norm=5.0)
 
   hparams.add_hparam('model_name', 'wrn')
-  hparams.add_hparam('num_epochs', 5)
+  hparams.add_hparam('num_epochs', 10)
   hparams.add_hparam('wrn_size', 32)
   hparams.add_hparam('lr', 0.1)
   hparams.add_hparam('weight_decay_rate', 5e-4)
@@ -43,26 +44,35 @@ def eval_wrn_40_2(args):
   return 1-result[2]
 
 def eval_fake(args):
+  print(args)
   ops = args['sub_policy'].split('_')
   policy = [(ops[0], args['Prob2'], args['Mag1']),(ops[1], args['Prob2'], args['Mag2'])]
   print(policy)
   return 0
 
-def run_trial():
+def run_trial(policy_nr):
   
   trials_step = 1  # how many additional trials to do after loading saved trials. 1 = save after iteration
-  max_trials = 0  # initial max_trials. put something small to not have to wait
-  model_name = 'eval_trials_wrn_40_2.hyperopt'
+  max_trials = 1  # initial max_trials. put something small to not have to wait
+  model_name = 'eval_trials_wrn_40_2_subpolicy{:02d}.hyperopt'.format(policy_nr)
+  filename = os.path.join('../../trials',model_name)
+  
+  if not os.path.exists(os.path.dirname(filename)):
+    try:
+        os.makedirs(os.path.dirname(filename))
+    except OSError as exc: # Guard against race condition
+        if exc.errno != errno.EEXIST:
+            raise
   
   try:  # try to load an already saved trials object, and increase the max
-	trials = pickle.load(open(model_name, "rb"))
+	trials = pickle.load(open(filename, "rb"))
 	print("Found saved Trials! Loading...")
 	max_trials = len(trials.trials) + trials_step
 	print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
   except:  # create a new trials object and start searching
 	trials = Trials()
   best = fmin(eval_wrn_40_2,
-    	space=SearchSpace(),    
+    	space=SearchSpace()[policy_nr],    
     	algo=tpe.suggest,
     	max_evals=max_trials,
     	trials=trials)
@@ -70,14 +80,15 @@ def run_trial():
   print('Best: ', best)
 
   # save the trials object
-  with open(model_name, "wb") as f:
+  with open(filename, "wb") as f:
     pickle.dump(trials, f)
 
 def main(_):
   print('starting training')
   
-  for i in range(3):
-    run_trial()
+  for sub_policy in range(25):
+    for runs in range(10):
+      run_trial(sub_policy)
   
 
 if __name__ == '__main__':
