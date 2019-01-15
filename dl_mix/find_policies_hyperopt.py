@@ -174,19 +174,16 @@ x1 = np.arange(-4, 4, 0.1)
 x2 = np.arange(-4, 4, 0.1)
 x3 = np.arange(-4, 4, 0.1)
 
-args= 500
-
-def run_trials(args):
+def run_trials():
 
 	trials_step = 1  # how many additional trials to do after loading saved trials. 1 = save after iteration
-	#max_trials = 5  # initial max_trials. put something small to not have to wait
-	max_trials = args
+	max_trials = 5  # initial max_trials. put something small to not have to wait
 	model_name = 'wrn40_2_max_trials{}.hyperopt'.format(max_trials)
 
 	try:  # try to load an already saved trials object, and increase the max
 		trials = pickle.load(open(model_name, "rb"))
 		print("Found saved Trials! Loading...")
-		# max_trials = len(trials.trials) + trials_step
+		max_trials = len(trials.trials) + trials_step
 		print("Rerunning from {} trials to {} (+{}) trials".format(len(trials.trials), max_trials, trials_step))
 	except:  # create a new trials object and start searching
 		trials = Trials()
@@ -194,7 +191,7 @@ def run_trials(args):
 	best = fmin(wrn40_2,
     	space=sspace,    
     	algo=tpe.suggest,
-    	max_evals=1500,
+    	max_evals=max_trials,
     	trials=trials)
 
 	print('Best: ', best)
@@ -207,5 +204,5 @@ def run_trials(args):
 		quit()
 
 while True:
-    run_trials(args)
+    run_trials()
 
