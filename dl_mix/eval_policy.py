@@ -7,12 +7,12 @@ from search_space import SearchSpace
 tf.flags.DEFINE_string('model_name', 'wrn',
                        'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
                        'pyramid_net')
-tf.flags.DEFINE_string('checkpoint_dir', '../../wrn_test/training', 'Training Directory.')
-tf.flags.DEFINE_string('data_path', '../../wrn_test/data',
+tf.flags.DEFINE_string('checkpoint_dir', '../../training', 'Training Directory.')
+tf.flags.DEFINE_string('data_path', '../../data',
                        'Directory where dataset is located.')
 tf.flags.DEFINE_string('dataset', 'cifar10',
                        'Dataset to train with. Either cifar10 or cifar100')
-tf.flags.DEFINE_integer('use_cpu', 1, '1 if use CPU, else GPU.')
+tf.flags.DEFINE_integer('use_cpu', 0, '1 if use CPU, else GPU.')
 
 FLAGS = tf.flags.FLAGS
 
