@@ -54,6 +54,7 @@ def run_trial(policy_nr):
   
   trials_step = 1  # how many additional trials to do after loading saved trials. 1 = save after iteration
   max_trials = 1  # initial max_trials. put something small to not have to wait
+<<<<<<< HEAD
   model_name = 'eval_trials_wrn_40_2_subpolicy{:02d}.hyperopt'.format(policy_nr)
   filename = os.path.join('../../trials',model_name)
   
@@ -63,6 +64,9 @@ def run_trial(policy_nr):
     except OSError as exc: # Guard against race condition
         if exc.errno != errno.EEXIST:
             raise
+=======
+  model_name = 'eval_trials_wrn_40_2.hyperopt'
+>>>>>>> cc4e627413686c962dd969109ce839100ab38a79
   
   try:  # try to load an already saved trials object, and increase the max
 	trials = pickle.load(open(filename, "rb"))
