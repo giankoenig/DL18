@@ -32,18 +32,6 @@ import tensorflow as tf
 from wrn import build_wrn_model
 
 
-
-
-tf.flags.DEFINE_string('model_name', 'wrn',
-                       'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
-                       'pyramid_net')
-tf.flags.DEFINE_string('checkpoint_dir', '/tmp/training', 'Training Directory.')
-tf.flags.DEFINE_string('data_path', '/tmp/data',
-                       'Directory where dataset is located.')
-tf.flags.DEFINE_string('dataset', 'cifar10',
-                       'Dataset to train with. Either cifar10 or cifar100')
-tf.flags.DEFINE_integer('use_cpu', 1, '1 if use CPU, else GPU.')
-
 FLAGS = tf.flags.FLAGS
 
 arg_scope = tf.contrib.framework.arg_scope
@@ -319,14 +307,14 @@ class CifarModelTrainer(object):
     starting_epoch = hparams.num_epochs - epochs_left
     return starting_epoch
 
-  def _run_training_loop(self, m, curr_epoch):
+  def _run_training_loop(self, m, curr_epoch, policy):
     """Trains the cifar model `m` for one epoch."""
     start_time = time.time()
     while True:
       try:
         with self._new_session(m):
           train_accuracy = helper_utils.run_epoch_training(
-              self.session, m, self.data_loader, curr_epoch)
+              self.session, m, self.data_loader, curr_epoch, policy)
           tf.logging.info('Saving model after epoch')
           self.save_model(step=curr_epoch)
           break
@@ -348,7 +336,7 @@ class CifarModelTrainer(object):
     tf.logging.info('Test Accuracy: {}'.format(test_accuracy))
     return valid_accuracy, test_accuracy
 
-  def run_model(self):
+  def run_model(self, policy):
     """Trains and evalutes the image model."""
     hparams = self.hparams
 
@@ -370,7 +358,7 @@ class CifarModelTrainer(object):
       for curr_epoch in xrange(starting_epoch, hparams.num_epochs):
 
         # Run one training epoch
-        training_accuracy = self._run_training_loop(m, curr_epoch)
+        training_accuracy = self._run_training_loop(m, curr_epoch, policy)
 
         valid_accuracy = self.eval_child_model(
             meval, self.data_loader, 'val')
@@ -383,6 +371,8 @@ class CifarModelTrainer(object):
     tf.logging.info(
         'Train Acc: {}    Valid Acc: {}     Test Acc: {}'.format(
             training_accuracy, valid_accuracy, test_accuracy))
+    
+    return [training_accuracy, valid_accuracy, test_accuracy]
 
   @property
   def saver(self):

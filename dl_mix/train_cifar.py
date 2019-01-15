@@ -307,14 +307,14 @@ class CifarModelTrainer(object):
     starting_epoch = hparams.num_epochs - epochs_left
     return starting_epoch
 
-  def _run_training_loop(self, m, curr_epoch):
+  def _run_training_loop(self, m, curr_epoch, policy):
     """Trains the cifar model `m` for one epoch."""
     start_time = time.time()
     while True:
       try:
         with self._new_session(m):
           train_accuracy = helper_utils.run_epoch_training(
-              self.session, m, self.data_loader, curr_epoch)
+              self.session, m, self.data_loader, curr_epoch, policy)
           tf.logging.info('Saving model after epoch')
           self.save_model(step=curr_epoch)
           break
@@ -336,7 +336,7 @@ class CifarModelTrainer(object):
     tf.logging.info('Test Accuracy: {}'.format(test_accuracy))
     return valid_accuracy, test_accuracy
 
-  def run_model(self):
+  def run_model(self, policy):
     """Trains and evalutes the image model."""
     hparams = self.hparams
 
@@ -358,7 +358,7 @@ class CifarModelTrainer(object):
       for curr_epoch in xrange(starting_epoch, hparams.num_epochs):
 
         # Run one training epoch
-        training_accuracy = self._run_training_loop(m, curr_epoch)
+        training_accuracy = self._run_training_loop(m, curr_epoch, policy)
 
         valid_accuracy = self.eval_child_model(
             meval, self.data_loader, 'val')

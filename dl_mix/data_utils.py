@@ -22,6 +22,7 @@ from __future__ import print_function
 import copy
 import cPickle
 import os
+import augmentation_transforms
 import numpy as np
 import tensorflow as tf
 
@@ -131,7 +132,7 @@ class DataSet(object):
     self.val_labels = all_labels[train_size:train_size + val_size]
     self.num_train = self.train_images.shape[0]
 
-  def next_batch(self):
+  def next_batch(self, epoch_policy):
     """Return the next minibatch of augmented data."""
     next_train_index = self.curr_train_index + self.hparams.batch_size
     if next_train_index > self.num_train:
@@ -147,8 +148,14 @@ class DataSet(object):
     final_imgs = []
 
     images, labels = batched_data
-    for data in images:
-      final_imgs.append(data)
+    for data in images:      
+      final_img = augmentation_transforms.apply_policy(
+          epoch_policy, data)
+      final_img = augmentation_transforms.random_flip(
+          augmentation_transforms.zero_pad_and_crop(final_img, 4))
+      # Apply cutout
+      final_img = augmentation_transforms.cutout_numpy(final_img)
+      final_imgs.append(final_img)
     batched_data = (np.array(final_imgs, np.float32), labels)
     self.curr_train_index += self.hparams.batch_size
     return batched_data

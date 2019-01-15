@@ -107,7 +107,7 @@ def get_lr(curr_epoch, hparams, iteration=None):
   return lr
 
 
-def run_epoch_training(session, model, data_loader, curr_epoch):
+def run_epoch_training(session, model, data_loader, curr_epoch, policy):
   """Runs one epoch of training for the model passed in.
 
   Args:
@@ -137,7 +137,7 @@ def run_epoch_training(session, model, data_loader, curr_epoch):
     if step % 20 == 0:
       tf.logging.info('Training {}/{}'.format(step, steps_per_epoch))
 
-    train_images, train_labels = data_loader.next_batch()
+    train_images, train_labels = data_loader.next_batch(policy)
     _, step, _ = session.run(
         [model.train_op, model.global_step, model.eval_op],
         feed_dict={

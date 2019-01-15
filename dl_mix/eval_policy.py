@@ -1,23 +1,23 @@
 from train_cifar import CifarModelTrainer
 import tensorflow as tf
 import shutil
+from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
+from search_space import SearchSpace
 
 tf.flags.DEFINE_string('model_name', 'wrn',
                        'wrn, shake_shake_32, shake_shake_96, shake_shake_112, '
                        'pyramid_net')
-tf.flags.DEFINE_string('checkpoint_dir', '../training', 'Training Directory.')
-tf.flags.DEFINE_string('data_path', '../data',
+tf.flags.DEFINE_string('checkpoint_dir', '../../wrn_test/training', 'Training Directory.')
+tf.flags.DEFINE_string('data_path', '../../wrn_test/data',
                        'Directory where dataset is located.')
 tf.flags.DEFINE_string('dataset', 'cifar10',
                        'Dataset to train with. Either cifar10 or cifar100')
-tf.flags.DEFINE_integer('use_cpu', 0, '1 if use CPU, else GPU.')
+tf.flags.DEFINE_integer('use_cpu', 1, '1 if use CPU, else GPU.')
 
 FLAGS = tf.flags.FLAGS
 
 
-
-def main(_):
-  print('starting training')
+def eval_wrn_40_2(args):
   hparams = tf.contrib.training.HParams(
       train_size=4000,
       validation_size=500,
@@ -32,15 +32,34 @@ def main(_):
   hparams.add_hparam('wrn_size', 32)
   hparams.add_hparam('lr', 0.1)
   hparams.add_hparam('weight_decay_rate', 5e-4)
-  
-  results = []
-  for i in range(2):
-    cifar_trainer = CifarModelTrainer(hparams)
-    result = cifar_trainer.run_model()
-    results.append(result)
-    shutil.rmtree(FLAGS.checkpoint_dir)
+    
+  cifar_trainer = CifarModelTrainer(hparams)
 
-  print(results)
+  ops = args['sub_policy'].split('_')
+  policy = [(ops[0], args['Prob2'], args['Mag1']),(ops[1], args['Prob2'], args['Mag2'])]
+  result = cifar_trainer.run_model(policy)
+  shutil.rmtree(FLAGS.checkpoint_dir)
+  return 1-result[2]
+
+def eval_wrn(args):
+    ops = args['sub_policy'].split('_')
+    policy = [(ops[0], args['Prob2'], args['Mag1']),(ops[1], args['Prob2'], args['Mag2'])]
+    print(policy)
+    return 0
+
+def main(_):
+  print('starting training')
+  
+  trials = Trials()
+
+  best = fmin(eval_wrn_40_2,
+    	space=SearchSpace(),    
+    	algo=tpe.suggest,
+    	max_evals=2,
+    	trials=trials)
+
+  print('Best: ', best)
+  
 
 if __name__ == '__main__':
   tf.logging.set_verbosity(tf.logging.INFO)

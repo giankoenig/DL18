@@ -3,7 +3,6 @@ import train_cifar
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
 
 import numpy as np
-import matplotlib.pyplot as plt
 import pickle
 
 # available policies: Section 2.2 in https://github.com/hyperopt/hyperopt/wiki/FMin
