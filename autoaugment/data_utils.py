@@ -25,6 +25,7 @@ import os
 import augmentation_transforms
 import numpy as np
 import policies as found_policies
+import hyperopt_policies
 import tensorflow as tf
 
 import matplotlib.pyplot as plt
@@ -46,7 +47,7 @@ class DataSet(object):
 
     all_labels = []
 
-    self.good_policies = found_policies.good_policies()
+    self.good_policies = hyperopt_policies.good_policies() # found_policies.good_policies()
 
     # Determine how many databatched to load
     num_data_batches_to_load = 5
