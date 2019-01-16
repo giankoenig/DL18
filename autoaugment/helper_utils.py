@@ -138,7 +138,7 @@ def run_epoch_training(session, model, data_loader, curr_epoch):
     if step % 20 == 0:
       tf.logging.info('Training {}/{}'.format(step, steps_per_epoch))
 
-    train_images, train_labels = data_loader.next_batch(policy)
+    train_images, train_labels = data_loader.next_batch()
 
     _, step, _ = session.run(
         [model.train_op, model.global_step, model.eval_op],
