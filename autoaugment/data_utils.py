@@ -47,7 +47,8 @@ class DataSet(object):
 
     all_labels = []
 
-    self.good_policies = hyperopt_policies.good_policies() # found_policies.good_policies()
+    # self.good_policies = found_policies.good_policies()
+    self.good_policies = hyperopt_policies.good_policies()
 
     # Determine how many databatched to load
     num_data_batches_to_load = 5
