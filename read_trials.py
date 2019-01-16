@@ -18,12 +18,12 @@ keys = [['Invert','Prob_Invert1', 'Mag_Invert1', 'Contrast', 'Prob_Constrast2', 
        ['Rotate', 'Prob_Rotate3', 'Mag_Rotate3', 'TranslateX', 'Prob_TranslateX4', 'Mag_TranslateX44'],
        ['Sharpness', 'Prob_Sharpness5', 'Mag_Sharpness5', 'Sharpness', 'Prob_Sharpness6', 'Mag_Sharpness6'],
        ['ShearY', 'Prob_Shear7', 'Mag_ShearY7', 'TranslateY', 'Prob_Translate8', 'Mag_TranslateY8'],
-       ['AutoContras', 'Prob_AutoContrast9', 'Mag_AutoContrast9', 'Equalize', 'Prob_Equalize10', 'Mag_Equalize10'],
+       ['AutoContrast', 'Prob_AutoContrast9', 'Mag_AutoContrast9', 'Equalize', 'Prob_Equalize10', 'Mag_Equalize10'],
        ['ShearY', 'Prob_ShearY11', 'Mag_ShearY11', 'TranslateY', 'Prob_TranslateY12', 'Mag_TranslateY12'],
        ['Color', 'Prob_Color13', 'Mag_Color13', 'Brightness', 'Prob_Brightness14', 'Mag_Brightness14'],
        ['Sharpness', 'Prob_Sharpness15', 'Mag_Sharpness15', 'Brightness', 'Prob_Brightness16', 'Mag_Brightness16'],
        ['Equalize', 'Prob_Equalize17', 'Mag_Equalize17', 'Equalize', 'Prob_Equalize18', 'Mag_Equalize18'],
-       ['Contras', 'Prob_Constrast19', 'Mag_Constrast19', 'Sharpness', 'Prob_Sharpness20', 'Mag_Sharpness20'],
+       ['Contrast', 'Prob_Constrast19', 'Mag_Constrast19', 'Sharpness', 'Prob_Sharpness20', 'Mag_Sharpness20'],
        ['Color', 'Prob_Color21', 'Mag_Color21', 'TranslateX', 'Prob_TranslateX22', 'Mag_TranslateX22'],
        ['Equalize', 'Prob_Equalize23', 'Mag_Equalize23', 'AutoContrast', 'Prob_AutoContrast24', 'Mag_AutoContrast24'],
        ['TranslateY', 'Prob_TranslateY25', 'Mag_TranslateY25', 'Sharpness', 'Prob_Sharpness26', 'Mag_Sharpness26'],
@@ -51,8 +51,8 @@ for filename in trialfiles[0]:
 
   print('loss: {}'.format(best_trials[0]['result']['loss']))
   #print(best_trials[0]['misc']['vals'])
-  sub_policy = [(keys[i][0], best_trials[0]['misc']['vals'][keys[i][1]], best_trials[0]['misc']['vals'][keys[i][2]]),
-                (keys[i][3], best_trials[0]['misc']['vals'][keys[i][4]], best_trials[0]['misc']['vals'][keys[i][5]])]
+  sub_policy = [(keys[i][0], best_trials[0]['misc']['vals'][keys[i][1]][0], best_trials[0]['misc']['vals'][keys[i][2]][0]),
+                (keys[i][3], best_trials[0]['misc']['vals'][keys[i][4]][0], best_trials[0]['misc']['vals'][keys[i][5]][0])]
   good_policies.append(sub_policy)
   print(sub_policy)
   i += 1
