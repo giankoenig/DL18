@@ -173,23 +173,23 @@ class DataSet(object):
 
     ##########################################################
 
-    num_rows = 5
-    num_cols = 3
-    num_images = num_rows*num_cols
-    plt.figure(figsize=(2*2*num_cols, 2*num_rows))
-    for i in range(num_images):
-      arr = images[i]
-      arr2 = final_imgs[i]
+    # num_rows = 5
+    # num_cols = 3
+    # num_images = num_rows*num_cols
+    # plt.figure(figsize=(2*2*num_cols, 2*num_rows))
+    # for i in range(num_images):
+    #   arr = images[i]
+    #   arr2 = final_imgs[i]
 
-      R1 = arr[:,:,0]
-      R2 = arr2[:,:,0]
+    #   R1 = arr[:,:,0]
+    #   R2 = arr2[:,:,0]
 
-      plt.subplot(num_rows, 2*num_cols, 2*i+1)
-      plt.imshow(R1,interpolation='bicubic')
-      plt.subplot(num_rows, 2*num_cols, 2*i+2)
-      plt.imshow(R2,interpolation='bicubic')
-    plt.savefig('policy_examples_'+str(timestr)+'.png')
-    plt.close('all')
+    #   plt.subplot(num_rows, 2*num_cols, 2*i+1)
+    #   plt.imshow(R1,interpolation='bicubic')
+    #   plt.subplot(num_rows, 2*num_cols, 2*i+2)
+    #   plt.imshow(R2,interpolation='bicubic')
+    # plt.savefig('policy_examples_'+str(timestr)+'.png')
+    # plt.close('all')
 
     ##########################################################
 
