@@ -58,5 +58,5 @@ for filename in trialfiles[0]:
   i += 1
 
   
-with open('optimal_policies_0.pol', "wb") as f:
+with open('optimal_policies_1.pol', "wb") as f:
 		pickle.dump(good_policies, f)
