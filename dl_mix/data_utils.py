@@ -42,7 +42,7 @@ class DataSet(object):
 
 
     # Determine how many databatched to load
-    num_data_batches_to_load = 1
+    num_data_batches_to_load = 5
     total_batches_to_load = num_data_batches_to_load
     train_batches_to_load = total_batches_to_load
     assert hparams.train_size + hparams.validation_size <= 50000
