@@ -30,7 +30,7 @@ def eval_wrn_40_2(args):
       gradient_clipping_by_global_norm=5.0)
 
   hparams.add_hparam('model_name', 'wrn')
-  hparams.add_hparam('num_epochs', 10)
+  hparams.add_hparam('num_epochs', 12)
   hparams.add_hparam('wrn_size', 32)
   hparams.add_hparam('lr', 0.1)
   hparams.add_hparam('weight_decay_rate', 5e-4)
@@ -88,7 +88,7 @@ def main(_):
   print('starting training')
   
   for sub_policy in range(25):
-    for runs in range(10):
+    for runs in range(20):
       run_trial(sub_policy)
   
 
