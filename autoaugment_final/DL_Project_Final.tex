@@ -51,14 +51,14 @@
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-This document presents the results for the deep learning course at ETH as required in~\cite{DL18}. In the first section data augmentation as the problem of interest is described, as well as reinforcement learning as an approache to improve data augmentation. In the second section, the problem is described in more detail and Bayesian Optimization is introduced as an alternative approach to tune hyper parameters for automated data-augmentation policies. This section also includes the final results. Finally, a conclusion is presented. 
+This document presents the results for the deep learning course at ETH as required in~\cite{DL18}. In the first section data augmentation as the problem of interest is described, as well as reinforcement learning as an approach to improve data augmentation. In the second section, the problem is described in more detail and Bayesian Optimization is introduced as an alternative approach to tune hyper parameters for automated data-augmentation policies. This section also includes the final results. Finally, a conclusion is presented. 
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
 \section{AutoAugment with Reinforcement Learning and Other Approaches}
 Machine learning algorithms usually achieve better results with more data, however acquiring this additional data can be expensive and time-consuming.  A common trick to increase the amount of training data is to add copies of existing data with small perturbations to the training set. For a dataset of natural images dataset augmentation methods include random cropping, image mirroring, rotation, color shifting and color whitening. Picking a good combination of these methods is usually done by hand and requires expert knowledge and time.
 \par
-Therefore, an automated approach was introduced in order to find the best policies~\cite{Ekin}. Cubuk et. al. present a process of finding an efficient data augmentation policy, in which each policy contains possible augmentation operations. Each operation contains an image processing function (e. g. translation, rotation or color normalization) combined with a probability that this function is applied with a corresponding magnitude. To find the best choices of these functions and suitable scaling factors, Cubuk et. al. use a reinforcement learning search algorithm such that a neural network, trained on these hyper parameters, yields the best validation accuracy. 
+Therefore, an automated approach was introduced in order to find the best policies~\cite{Ekin}. Cubuk et. al. present a process of finding an efficient data augmentation policy, in which each policy contains possible augmentation operations. Each operation contains an image processing function (e. g. translation, rotation or color normalization) combined with a probability that this function is applied with a corresponding magnitude. To find the best choices of these functions and suitable scaling factors, Cubuk et. al. use a reinforcement learning search algorithm such that a wide resnet (WRN-40-2), trained on these hyper parameters, yields the best validation accuracy. 
 \par
 Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using augmented random search to efficiently find augmentation policies in a continuous hyper parameter search space. Tran et al. \cite{DBLP:journals/corr/abs-1710-10564} follow a slightly different approach where they use GANs to find valid augmented data. While Fawzi et al. \cite{Fawzi} pursued a worst-case augmentation approach where they generate augmented data which gives the biggest loss for the current classifier.
 
@@ -71,6 +71,7 @@ We will focus on using a single network architecture (WideResNet), using the sam
 The available policies~\cite{Ekin} used in their program are ShearX(Y) (shear the image along the horizontal (vertical) axis with rate magnitude), TranslateX(Y) (translate the image in the horizontal (vertical) direction by magnitude number of pixels), Rotate (rotate the image magnitude degrees), AutoContrast (maximize the the image contrast, by making the darkest pixel black and lightest pixel white),  Invert (invert the pixels of the image), Equalize (equalize the image histogram), Solarize (invert all pixels above a threshold value of magnitude), Posterize (reduce the number of bits for each pixel to magnitude bits), Contrast (control the contrast of the image. A magnitude=0 gives a gray image, whereas magnitude=1 gives the original image), Color (adjust the color balance of the image, in a manner similar to the controls on a colour TV set. A magnitude=0 gives a black and white image, whereas magnitude=1 gives the original image), Brightness (adjust the brightness of the image. A magnitude=0 gives a black image, whereas magnitude=1 gives the original image), Sharpness (adjust the sharpness of the image. A magnitude=0 gives a blurred image, whereas magnitude=1 gives the original image), Cutout (set a random square patch of side-length magnitude pixels to gray), Sample Pairing (linearly add the image with another image (selected at random from the same mini-batch) with weight magnitude, without changing the label).
 The code which includes the reinforcement learning to generate the optimal policies is not included in their repository\footnote{https://github.com/tensorflow/models/tree/master/research/autoaugment}. But the results from the optimization is included in the file \texttt{policies.py}, or in table 8 in~\cite{Ekin}. Figure~\ref{fig:PolicyExample} shows samples of the policies applied to some images from the CIFAR-10.
 
+\iffalse
 \begin{figure}
 	\centering
 	\resizebox{\columnwidth}{!}{
@@ -79,6 +80,7 @@ The code which includes the reinforcement learning to generate the optimal polic
 	\caption{Example of policies found with RF applied to CIFAR-10}
 	\label{fig:PolicyExample}
 \end{figure}
+\fi
 
 \subsection{Generate Optimal Policies using Bayesian Optimization}
 Because our computation power was limited, we decided to use only the 25 sub-policies listed in table~\ref{tab:good_policies} found by~\cite{Ekin} and optimize over the probability and magnitude of each of the sub-policy.
@@ -86,7 +88,7 @@ Because our computation power was limited, we decided to use only the 25 sub-pol
 The following procedure briefly describes the steps of the process to find optimal probability and magnitude for each sub-policy defined in~\ref{tab:good_policies} with reference to the files in our repository\footnote{https://github.com/giankoenig/DL18}:
 
 \begin{enumerate}
-\item Run \texttt{DL18/dl\_mix/eval\_policies.py} $\rightarrow$ A WRN-20-4 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the \texttt{DL18/dl\_mix/search\_space.py}. The optimal policies are safed in the folder \texttt{DL18/trials}.
+\item Run \texttt{DL18/dl\_mix/eval\_policies.py} $\rightarrow$ A WRN-40-2 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the \texttt{DL18/dl\_mix/search\_space.py}. The optimal policies are safed in the folder \texttt{DL18/trials}.
 \item Run \texttt{DL18/read\_trials.py} $\rightarrow$ This creates the file \texttt{optimal\_policies\_[X].pol}, which includes the optimal policies in a structure that can be processed by the main program \texttt{train\_cifar.py}. In order to read in the new good policies, the file \texttt{hyperopt\_policies.py} is placed \texttt{DL18/autoaugment} and called on \texttt{line 51} in \texttt{data\_utils.py} in order to import the new policies.
 \item Run \texttt{DL18/autoaugment/train\_cifar.py} $\rightarrow$  Trains CIFAR-10 on WRN-28-10 with optimal policies.
 \end{enumerate}
