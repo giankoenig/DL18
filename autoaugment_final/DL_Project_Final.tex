@@ -65,7 +65,7 @@ Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using
 \section{AutoAugment with Bayesian Optimization}
 We use Bayesian Optimization, a technique already used for tuning hyperparameters, to automatically select a good combination of augmentation policies. And to compare this to the approach used in~\cite{Ekin}. Specifically, we investigate the Bayesian Optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt}. For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate Bayesian Optimization into the data augmentation task.
 \par
-We will focus on using a single network architecture (WideResNet), using the same hyper parameters as the authors of the original paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing Bayesian Optimization to select the optimal combination of augmentation policies. 
+We will focus on optimizing the parameters a single network architecture (Wide Residual Network)~\cite{WRN}, using the same hyper parameters as the authors of the original autoaugment paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing Bayesian Optimization to select the optimal parameters for the augmentation policies (and to some extent also combinations as setting the probability of some sub-policy means this sub-policy is ignored) and using a less complex WideResNet than is used for the final classification task.
 
 \subsection{Available Policies}
 The available policies~\cite{Ekin} used in their program are ShearX(Y) (shear the image along the horizontal (vertical) axis with rate magnitude), TranslateX(Y) (translate the image in the horizontal (vertical) direction by magnitude number of pixels), Rotate (rotate the image magnitude degrees), AutoContrast (maximize the the image contrast, by making the darkest pixel black and lightest pixel white),  Invert (invert the pixels of the image), Equalize (equalize the image histogram), Solarize (invert all pixels above a threshold value of magnitude), Posterize (reduce the number of bits for each pixel to magnitude bits), Contrast (control the contrast of the image. A magnitude=0 gives a gray image, whereas magnitude=1 gives the original image), Color (adjust the color balance of the image, in a manner similar to the controls on a colour TV set. A magnitude=0 gives a black and white image, whereas magnitude=1 gives the original image), Brightness (adjust the brightness of the image. A magnitude=0 gives a black image, whereas magnitude=1 gives the original image), Sharpness (adjust the sharpness of the image. A magnitude=0 gives a blurred image, whereas magnitude=1 gives the original image), Cutout (set a random square patch of side-length magnitude pixels to gray), Sample Pairing (linearly add the image with another image (selected at random from the same mini-batch) with weight magnitude, without changing the label).
@@ -83,7 +83,7 @@ The code which includes the reinforcement learning to generate the optimal polic
 \fi
 
 \subsection{Generate Optimal Policies using Bayesian Optimization}
-Because our computation power was limited, we decided to use only the 25 sub-policies listed in table~\ref{tab:good_policies} found by~\cite{Ekin} and optimize over the probability and magnitude of each of the sub-policy.
+Because our computation power was limited, we decided to use only the 25 sub-policies listed in table~\ref{tab:good_policies} found by~\cite{Ekin} and optimize over the probability and magnitude of each sub-policy.
 
 The following procedure briefly describes the steps of the process to find optimal probability and magnitude for each sub-policy defined in~\ref{tab:good_policies} with reference to the files in our repository\footnote{https://github.com/giankoenig/DL18}:
 
@@ -128,6 +128,13 @@ Bayesian Optimization$_{S2,12,20}$ & tbd & tbd \\
 
 We performed the training on the Google Cloud~\cite{GCloud} using one Tesla P100 GPU. The training of the WRN-28-10 with the policies given from the reinforcement learning search required 9h15min. The time required to optimize all probabilities and magnitudes of the policies~\ref{tab:good_policies} with 20 trials for each subpolicy required 12.5h. \newline
 
+\subsection{Discussion}
+
+The tests done show that is possible to achieve similar results as the original authors of autoaugment got (on a restricted search space) using bayesian optimization. As the code that they used to find their policies was not publicly available and they don't state the effort taken to find these policies we were unfortunately unable to compare the efficiency. 
+
+\section{Summary}
+
+Bayesian optimization with a WRN-40-2 was tested as a means to find good augmentation policies for a WRN-28-10 and cifar-10. The tests done showed that it was indeed possible to find viable policies for the reduced search space within a reasonable computational effort. Further interesting questions in this area would be if it is indeed acceptable to evaluate one policy after another or if they need to be evaluated jointly, gain a better understanding of the number of trials needed to get good values in this parameter-space and also to see how bayesian optimization would cope with the full search space which was for computational reasons out of the possible scope of this project.
 
 
 \section{Appendix}
