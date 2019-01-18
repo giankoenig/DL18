@@ -86,7 +86,7 @@ Because our computation power was limited, we decided to use only the 25 sub-pol
 The following procedure briefly describes the steps of the process to find optimal probability and magnitude for each sub-policy defined in~\ref{tab:good_policies} with reference to the files in our repository\footnote{https://github.com/giankoenig/DL18}:
 
 \begin{enumerate}
-\item Run \texttt{DL18/dl\_mix/eval\_policies.py} $\rightarrow$ A WRN-20-4 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the \texttt{DL18/dl\_mix/search\_space.py}. The optimal policies are safed in the folder \texttt{DL18/trials}.
+\item Run \texttt{DL18/dl\_mix/eval\_policies.py} $\rightarrow$ A WRN-40-2 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the \texttt{DL18/dl\_mix/search\_space.py}. The optimal policies are safed in the folder \texttt{DL18/trials}.
 \item Run \texttt{DL18/read\_trials.py} $\rightarrow$ This creates the file \texttt{optimal\_policies\_[X].pol}, which includes the optimal policies in a structure that can be processed by the main program \texttt{train\_cifar.py}. In order to read in the new good policies, the file \texttt{hyperopt\_policies.py} is placed \texttt{DL18/autoaugment} and called on \texttt{line 51} in \texttt{data\_utils.py} in order to import the new policies.
 \item Run \texttt{DL18/autoaugment/train\_cifar.py} $\rightarrow$  Trains CIFAR-10 on WRN-28-10 with optimal policies.
 \end{enumerate}
