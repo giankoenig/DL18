@@ -65,22 +65,24 @@ Geng et al. \cite{DBLP:journals/corr/abs-1811-04768} extended on this idea using
 \section{AutoAugment with Bayesian Optimization}
 We use Bayesian Optimization, a technique already used for tuning hyperparameters, to automatically select a good combination of augmentation policies. And to compare this to the approach used in~\cite{Ekin}. Specifically, we investigate the Bayesian Optimization \cite{2018arXiv180702811F},~\cite{Goodfellow-et-al-2016} approach with a Tree Parzen Esimator~\cite{Kaggle_AMT} by using the Hyperopt library~\cite{HyperOpt} with the help of~\cite{BO_Hyperopt}. For this specific task,~\cite{2017arXiv171010564T} gives us a guideline on how to integrate Bayesian Optimization into the data augmentation task.
 \par
-We will focus on optimizing the parameters a single network architecture (Wide Residual Network)~\cite{WRN}, using the same hyper parameters as the authors of the original autoaugment paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing Bayesian Optimization to select the optimal parameters for the augmentation policies (and to some extent also combinations as setting the probability of some sub-policy means this sub-policy is ignored) and using a less complex WideResNet than is used for the final classification task.
+We focus on optimizing the parameters for a single network architecture WRN-28-10(Wide Residual Network)~\cite{WRN}, using the same hyper parameters as the authors of the original autoaugment paper~\cite{Ekin}, changing the search space from discrete to continuous and utilizing Bayesian Optimization to select the optimal parameters for the augmentation policies (and to some extent also combinations as setting the probability of some sub-policy means this sub-policy is ignored) and using a less complex WRN-40-2 than is used for the final classification task.
+\par
+Training the simpler WRN-40-2 once still required about 2.5min on the google cloud which meant trying to get close to the 15'000 evaluations the authors of autoaugment did would've required about 26 days of running the code. We therefore decided to reduce the search-space to the policy-combinations already found by Ekin et al.~\cite{Ekin} and check if hyperopt would be a good solution to optimize these further for Cifar-10 in a continous search space.
 
 \subsection{Available Policies}
 The available policies~\cite{Ekin} used in their program are ShearX(Y) (shear the image along the horizontal (vertical) axis with rate magnitude), TranslateX(Y) (translate the image in the horizontal (vertical) direction by magnitude number of pixels), Rotate (rotate the image magnitude degrees), AutoContrast (maximize the the image contrast, by making the darkest pixel black and lightest pixel white),  Invert (invert the pixels of the image), Equalize (equalize the image histogram), Solarize (invert all pixels above a threshold value of magnitude), Posterize (reduce the number of bits for each pixel to magnitude bits), Contrast (control the contrast of the image. A magnitude=0 gives a gray image, whereas magnitude=1 gives the original image), Color (adjust the color balance of the image, in a manner similar to the controls on a colour TV set. A magnitude=0 gives a black and white image, whereas magnitude=1 gives the original image), Brightness (adjust the brightness of the image. A magnitude=0 gives a black image, whereas magnitude=1 gives the original image), Sharpness (adjust the sharpness of the image. A magnitude=0 gives a blurred image, whereas magnitude=1 gives the original image), Cutout (set a random square patch of side-length magnitude pixels to gray), Sample Pairing (linearly add the image with another image (selected at random from the same mini-batch) with weight magnitude, without changing the label).
 The code which includes the reinforcement learning to generate the optimal policies is not included in their repository\footnote{https://github.com/tensorflow/models/tree/master/research/autoaugment}. But the results from the optimization is included in the file \texttt{policies.py}, or in table 8 in~\cite{Ekin}. Figure~\ref{fig:PolicyExample} shows samples of the policies applied to some images from the CIFAR-10.
 
-\iffalse
+
 \begin{figure}
 	\centering
 	\resizebox{\columnwidth}{!}{
 	\includegraphics{../autoaugment/policy_examples_20181228-165922.png}
 	}
-	\caption{Example of policies found with RF applied to CIFAR-10}
+	\caption{Example of augmentation policies applied to CIFAR-10}
 	\label{fig:PolicyExample}
 \end{figure}
-\fi
+
 
 \subsection{Generate Optimal Policies using Bayesian Optimization}
 Because our computation power was limited, we decided to use only the 25 sub-policies listed in table~\ref{tab:good_policies} found by~\cite{Ekin} and optimize over the probability and magnitude of each sub-policy.
@@ -88,53 +90,39 @@ Because our computation power was limited, we decided to use only the 25 sub-pol
 The following procedure briefly describes the steps of the process to find optimal probability and magnitude for each sub-policy defined in~\ref{tab:good_policies} with reference to the files in our repository\footnote{https://github.com/giankoenig/DL18}:
 
 \begin{enumerate}
-\item Run \texttt{DL18/dl\_mix/eval\_policies.py} $\rightarrow$ A WRN-40-2 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the \texttt{DL18/dl\_mix/search\_space.py}. The optimal policies are safed in the folder \texttt{DL18/trials}.
-\item Run \texttt{DL18/read\_trials.py} $\rightarrow$ This creates the file \texttt{optimal\_policies\_[X].pol}, which includes the optimal policies in a structure that can be processed by the main program \texttt{train\_cifar.py}. In order to read in the new good policies, the file \texttt{hyperopt\_policies.py} is placed \texttt{DL18/autoaugment} and called on \texttt{line 51} in \texttt{data\_utils.py} in order to import the new policies.
-\item Run \texttt{DL18/autoaugment/train\_cifar.py} $\rightarrow$  Trains CIFAR-10 on WRN-28-10 with optimal policies.
+\item A WRN-40-2 is trained on a reduced CIFAR-10 data set for each sub-policy defined in the search space for the number of trials specified beforehand. The optimal policies are safed.
+\item Train CIFAR-10 on WRN-28-10 with optimal policies found in the step above.
 \end{enumerate}
 
-To run the training in step 1 and 3 above it is suggested to use \texttt{nohup [COMMAND] $>$ output.txt $\&$} in order to store the output of the program. Note: To abort a command start with that setting, first find the ID of the job with \texttt{ps aux | grep python} and then abort it with \texttt{kill [JOB\_NUMBER]}. Below \texttt{[COMMAND]} for step 3 is given:
-
-\begin{table}[h!]
-\begin{center}
-\begin{tabular}{lllll}
- &\texttt{python train\_cifar.py}  \\
- &\qquad \qquad \texttt{--model\_name=wrn}  \\
- &\qquad \qquad \texttt{--checkpoint\_dir=../training/}   \\
- &\qquad \qquad \texttt{--data\_path=../../data/}  \\
- &\qquad \qquad \texttt{--dataset='cifar10'} \\
- &\qquad \qquad \texttt{--use\_cpu=0}
-\end{tabular}
-\end{center}
-\end{table}
-
 \subsection{Results}
-We performed three trainings where we optimized the probabilities and magnitude of the good policies~\ref{tab:good_policies}. A first run with 10 trials for each policy and 10 epochs on the WRN-40-2, a second one with 20 additional trials for each policy and again 10 epochs. For the last run the search space was slightly adjusted because some found policies from the second round seemed unreasonable. In order to increase accuracy the number of trials was increased to 20 per policy and the epoch number was increased to 12. The results are listed in the table~\ref{tab:results} below.
+We performed three trainings where we optimized the probabilities and magnitude of the good policies~\ref{tab:good_policies}. A first run with 10 trials for each policy and 10 epochs on the WRN-40-2, a second one with 20 additional trials for each policy and again 10 epochs. For the last run the search space was slightly adjusted because some found policies from the second round seemed unreasonable(translations outside of the image were in the search space). In an effort to increase accuracy the number of trials was increased to 20 per policy and the epoch number was increased to 12. The results are listed in the table~\ref{tab:results} below.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{lllll}
 \hline
 & Train Acc: &Test Acc: \\
 \hline
-Reinforcement Learning & None & 0.9727 \\
+Reinforcement Learning~\cite{Ekin} & None & 0.9727 \\
 Bayesian Optimization$_{S1,10,10}$ & 0.9353 & 0.9728 \\
 Bayesian Optimization$_{S1,10,30}$ & 0.9354 & 0.9684 \\
-Bayesian Optimization$_{S2,12,20}$ & tbd & tbd \\
+Bayesian Optimization$_{S2,12,20}$ & 0.9364 & 0.9702 \\
 \hline
 \end{tabular}
 \caption {Simulation results} \label{tab:results} 
 \end{center}
-\end{table}
+\end{table}\footnote{While writing this report we noticed that it would've been super helpfull to also have a baseline which shows the results you get using the good policy combination but with randomly drawn probabilities and magnitudes}
 
 We performed the training on the Google Cloud~\cite{GCloud} using one Tesla P100 GPU. The training of the WRN-28-10 with the policies given from the reinforcement learning search required 9h15min. The time required to optimize all probabilities and magnitudes of the policies~\ref{tab:good_policies} with 20 trials for each subpolicy required 12.5h. \newline
 
 \subsection{Discussion}
 
-The tests done show that is possible to achieve similar results as the original authors of autoaugment got (on a restricted search space) using bayesian optimization. As the code that they used to find their policies was not publicly available and they don't state the effort taken to find these policies we were unfortunately unable to compare the efficiency. 
+The tests done show that is possible to achieve similar results as the original authors of autoaugment got (on a restricted search space) using bayesian optimization. As the code that they used to find their policies was not publicly available and they don't state the effort taken to find these policies we were unfortunately unable to compare the efficiency of bayesian optimization compared to their reinforcement learning approach.
+\par
+An assumption taken for our work was that the policies can be evaluated independently of each other. Given that they're drawn with equal probability that seemed like a reasonable assumption which should be validated though in future work. Ekin et al. implicitly also showed that it is possible to find augmentation policies for a more complex network using a simpler network. An interesting question here is how simple can the evaluating network be in order to provide useful feedback for the final training. Simpler network obviously have the advantage that it is faster to train them, therefore allow for more bayesian optimization evaluations in the same amount of time. The third question that were raised by our work is how many evaluations of bayesian opt are needed in this search space to find good values for the data augmentation hyper-parameters.
 
 \section{Summary}
 
-Bayesian optimization with a WRN-40-2 was tested as a means to find good augmentation policies for a WRN-28-10 and cifar-10. The tests done showed that it was indeed possible to find viable policies for the reduced search space within a reasonable computational effort. Further interesting questions in this area would be if it is indeed acceptable to evaluate one policy after another or if they need to be evaluated jointly, gain a better understanding of the number of trials needed to get good values in this parameter-space and also to see how bayesian optimization would cope with the full search space which was for computational reasons out of the possible scope of this project.
+Bayesian optimization with a WRN-40-2 was tested as a means to find good augmentation policies for a WRN-28-10 and cifar-10. The tests done showed that it was indeed possible to find viable policies for the reduced search space within a reasonable computational effort. Our work raised several interesting questions related to the application of bayesian optimization in the area of data augmentation but unfortunately we weren't able to give a definitive answer on the efficiency of our approach compared to the reinforcement learning approach chosen by Ekin et al.
 
 
 \section{Appendix}
