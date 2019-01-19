@@ -11,7 +11,7 @@ Copy the data to ./data
 <b>Optimize policies using Bayesian Optimization on WRN-40-2 on reduced CIFAR-10 data</b>
 
 ```shell
-nohup python ./DL18/dl_mix/eval_policy.py > hyperopt_output.txt &
+nohup python DL18/dl_mix/eval_policy.py > hyperopt_output.txt &
 ```
 
 <b>Convert optimal solution found in step 2</b>
@@ -19,7 +19,7 @@ nohup python ./DL18/dl_mix/eval_policy.py > hyperopt_output.txt &
 Set name on line 61 in ./DL18/read_trials.py
 
 ```shell
-python ./DL18/read_trials.py
+python DL18/read_trials.py
 ```
 
 <b>Read in optimal solution in main program</b>
